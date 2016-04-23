@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no" name="viewport">
+		
+		<script type="text/javascript" src="/WebContent/resource/common/js/jquery-1.11.3.min.js"></script>
+		<link href="/WebContent/resource/common/css/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" href="/WebContent/resource/common/css/font-awesome.css" />
+ 
+		<link href="/spareTimeEdu/app/style/teacherBase.css" rel="stylesheet">
+		<link href="/spareTimeEdu/app/style/teacherList.css" rel="stylesheet">
+		<style type="text/css">
+			.clearfix {
+				clear: both;
+			}
+			
+			.user_nav {
+				display: none;
+			}
+		</style>
+		
+		<script src="/spareTimeEdu/app/lib/angular.min.js"></script>
+		<script src="/spareTimeEdu/app/lib/jquery-1.11.3.min.js"></script>
+		<script src="/spareTimeEdu/app/teacher/teacherList.js"></script>
+	</head>
+
+	<body  ng-app="teacherList" ng-controller="teacherListCtrl">
+		<!-- mobile-menu-left  start-->
+		<div class="mobile-menu mobile-menu-left">
+			<h2>
+			<a href="searchTeacher">首页</a>
+		</h2>
+			<ul class="mobile-menu-list">
+				<li class="picker-item"><a class="categoryBtn">找老师<span
+					class="icon icon-chevron-down"></span></a>
+					<ul class="sub-list">
+						
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- mobile-menu-left  end-->
+
+		<!-- mobile-menu-right  start-->
+		<div class="mobile-menu mobile-menu-right">
+			<ul class="mobile-sub-menu-list">
+				<li><a href="/meets/bull/">我约的行家</a></li>
+				<li><a href="/wishlist/">心愿单</a></li>
+				<li><a href="/tutor_apply/">成为行家</a></li>
+			</ul>
+			<a class="signout-btn btn-lg btn-warning" href="/auth/logout">退出</a>
+
+		</div>
+		<!-- mobile-menu-right  end-->
+
+		<!--main container start-->
+		<div class="container">
+			<!-- mobile header start-->
+			<div class="mobile-header">
+				<a id="mobileMenuBtn" class="mobile-menu-btn" href="javascript: void 0;"><span class="icon icon-reorder"></span></a>
+				<form onsubmit="return false;" class="search">
+					<input type="text" name="keyWord" value="" placeholder="输入人名、主题关键字" autocomplete="off" class="search-content" />
+					<button type="submit" onclick="searchInCity(this)" class="search-btn">
+						<span class="icon icon-search"></span>
+					</button>
+				</form>
+				<a data-login="false" id="mobileLoginBtn" class="mobile-login-btn" href="/auth/authorize-use/weibo?next=%2F"><span
+				class="icon icon-user"></span></a>
+			</div>
+			<!-- mobile header end-->
+
+			<!-- header start-->
+			<div class="header" id="header">
+				<div class="column">
+					<!-- <a href="/" class="header-logo"></a> -->
+					<ul class="header-nav">
+						<li><span style="color: orange; font-size: 30px;">智联教育</span></li>
+						
+						<li><a href="searchTeacher" class="select-for">老师</a></li>
+						<li><a href="searchTeacher">课程</a></li>
+						<li><a href="searchTeacher">活动</a></li>
+						
+						<li data-action="nav-select">
+							<div class="drop-menu" data-show="false" style="display: none;">
+								<i class="arrow-up"></i>模块
+								<ul class="drop-list">
+									<li><a href="searchTeacher">找老师</a></li>
+									<li><a href="searchMicroClass">找微课</a></li>
+									<li><a href="/topics/?tag_id=353">找活动</a></li>
+								</ul>
+							</div>
+						</li>
+
+					</ul>
+
+					<div class="to-be-tutor">
+						<a target="_blank" href="/tutor_apply/">成为老师</a>
+					</div>
+					<div class="header-setting  login-status">
+						<div>
+							<a href="#" rel="nofollow" data-login="false">登录</a> <span class="split"></span> <a href="#" data-zhuge="顶导航-注册" rel="nofollow">注册</a>
+						</div>
+						<nav class="user_nav">
+							<ul>
+								<li><a href="#">用户名<span style="font-size: 10px;"
+									class="icon-chevron-down"></span></a>
+									<ul>
+										<li><a href="#">我的课程</a></li>
+										<li><a href="#">我的微课</a></li>
+										<li><a href="#">退出</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<div class="header-setting">
+						<ul>
+							<li>
+								<form onsubmit="return false;" class="search">
+									<input type="text" name="keyWord" ng-click="condition.keyword" placeholder="输入人名、主题关键字" autocomplete="off" class="search-content" />
+									<input type="submit" ng-click="seach()" value="搜索" class="search-btn" />
+								</form>
+							</li>
+						</ul>
+					</div>
+					<div class="app-download">
+						<!-- <a target="_blank" href="/app/"
+						class="btn-primary app-download-btn">下载客户端</a> -->
+					</div>
+
+				</div>
+
+			</div>
+			<!-- header end-->
+
+			<!--topic-tags start-->
+			<div class="topic-tags-wrap">
+				<div class="topic-tags">
+					<div class="clearfix"></div>
+					<!--catagory start-->
+					<div class="category">
+						<div class="category-container">
+							<h2 class="category-title">
+								<span class="icon icon-search"> </span>我要找</h2>
+							<ul class="category-coruseType-list">
+								<!--<li class="picked unlimited"><a class="inner" data-action="select-coruseType" href="javascript:areaOnload(0);">不限</a></li>-->
+
+								<!--<li><a class="inner" data-action="select-coruseType" href="javascript:;">微课</a></li>
+
+								<li><a class="inner" data-action="select-coruseType" href="javascript:;">讲座培训</a></li>
+								<li><a class="inner" data-action="select-coruseType" href="javascript:;">免费公开课</a></li>-->
+
+								<li><a class="inner" data-action="select-coruseType" href="javascript:;">主题咨询</a></li>
+								<li><a class="inner" data-action="select-coruseType" href="javascript:;">私教兴趣课</a></li>
+
+							</ul>
+						</div>
+
+						
+						
+						<div class="category-container">
+							<h2 class="category-title">
+							<span class="icon  icon-yen"></span>费用
+						</h2>
+							<ul class="category-hot-list">
+								
+
+								<li><a class="inner" data-action="select-hot" href="javascript:;">0-100</a></li>
+
+								<li><a class="inner" data-action="select-hot" href="javascript:;">100-300</a></li>
+
+								<li><a class="inner" data-action="select-hot" href="javascript:;">300-500</a></li>
+
+								<li><a class="inner" data-action="select-hot" href="javascript:;">500+</a></li>
+							</ul>
+						</div>
+						
+						<div class="category-container">
+							<h2 class="category-title">
+							<span class="icon  icon-key"></span>关键字
+						</h2>
+							<ul class="category-hot-list">
+
+
+								<li><a class="inner" data-action="select-hot" href="javascript:;">正面管教</a></li>
+
+								<li><a class="inner" data-action="select-hot" href="javascript:;">PET</a></li>
+
+								<li><a class="inner" data-action="select-hot" href="javascript:;">幼儿园入园</a></li>
+
+								<li><a class="inner" data-action="select-hot" href="javascript:;">幼小衔接</a></li>
+
+
+							</ul>
+						</div>
+					</div>
+					<!--catagory end-->
+				</div>
+			</div>
+			<!--topic-tags start-->
+
+			<!--main content start-->
+			<div class="content">
+				<div class="total">
+					<ul class="sort-list">
+						<li class="picked "><a data-value="0" href="javascript:void 0;">综合排序</a></li>
+						<li class=""><a data-value="1" href="javascript:void 0;">人气<span></span></a></li>
+						<li class=""><a data-value="2" href="javascript:void 0;">评价<span></span></a></li>
+
+						<li class=""><a data-value="3" href="javascript:void 0;">价格<span></span></a></li>
+					</ul>
+					<select class="select-place">
+					<option>广州</option>
+					<option>深圳</option>
+					<option>其它</option>
+				</select>
+				</div>
+				
+				<ul class="topic-list topics perches">
+					<li class="a-topic" ng-repeat="course in course.courseInfoList">
+						<a class="topic-tutor-link" href="/mentor/84796189/topic/29867336/">
+							<span style="background-image : url(//7rylge.com2.z0.glb.qiniucdn.com/FooIuafgkumoQsi1Ud24m0WMdXm073!avatar)" class="topic-tutor-pic"></span>
+							<div class="topic-info">
+								<h3 class="topic-title" >
+	                    <span class="topic-title-txt" ng-bind="course.Subject"></span>
+	                       </h3>
+	                         <div class="topic-title-info" >									
+							<div class="">
+				            	<i class="money-i">￥<span ng-bind="course.Price"></span></i>&nbsp;元/次
+				            </div>
+				            <div class="" >约<span class="" style="margin: 0 4px;" ng-bind="course.Duration"></span>小时</div>
+				       		<div style=""><span class="special-span">66</span>&nbsp;人报名</div>
+	                    </div>
+	           
+								<div class="topic-tutor-info">
+									<span class="topic-tutor-name" ng-bind="course.TeacherName"></span>
+									
+									<span class="topic-tutor-intro" ng-bind="course.TeacherTitle">
+						</span>
+								</div>
+								<p ng-bind="course.CourseBreif"></p>
+							</div>
+						</a>
+					</li>
+
+				</ul>
+				<ul class="pager">
+
+					<li class="current"><a href="http://www.zaih.com/topics/?city=beijing">1</a></li>
+
+					<li><a href="http://www.zaih.com/topics/?city=beijing&amp;page=2">2</a></li>
+
+					<li><a href="http://www.zaih.com/topics/?city=beijing&amp;page=3">3</a></li>
+
+					<li>...</li>
+
+					<li><a href="http://www.zaih.com/topics/?city=beijing&amp;page=137">137</a></li>
+
+					<li><a href="http://www.zaih.com/topics/?city=beijing&amp;page=2"><span
+						class="icon icon-chevron-right"></span></a></li>
+
+				</ul>
+			</div>
+			<!--main content start-->
+
+			<!--footer start-->
+			<div class="footer">
+				<div class="column">
+					<div class="footer-content">
+						<div class="footer-left">
+							<span class="footer-qr"></span> <span>官方微信</span>
+						</div>
+						<div class="footer-left">
+							<span class="footer-qr-salon"></span> <span>CE沙龙<br>我们的故事+干货
+						</span>
+						</div>
+
+						<div class="footer-right">
+							<div class="footer-link">
+								<a href="/">首页</a> <span class="split"></span> <a href="/help/about/">关于我们</a> <span class="split"></span> <a href="/help/faq/">常见问题</a>
+							</div>
+							<a href="tel:4000691791" class="footer-tel">0000000000</a>
+							<p class="footer-time">工作日 10:00-19:00</p>
+							<div class="online-service">
+								<a target="_blank" href="#" class="btn-primary online-service-btn">在线客服</a>
+							</div>
+						</div>
+					</div>
+					<p class="footer-info">&copy;2015&nbsp;CE版权</p>
+				</div>
+			</div>
+			<!--footer end-->
+		</div>
+		<!--main container end-->
+
+		<!-- JavaScript at the bottom for fast page loading -->
+
+		<script>
+			var weixin_mp_config = {
+				"appId": "wx63736776bf28c6b5",
+				"nonceStr": "pVurZdH3IVTe",
+				"signature": "a00a515c8f25e2372248264ec03bc5e3af9cc9ee",
+				"timestamp": "1446949599"
+			};
+		</script>
+
+		<script>
+			var weibo_login_url = "/auth/authorize-use/weibo?next=http%3A%2F%2Fwww.zaih.com%2Ftopics%2F%3Fcity%3Dbeijing",
+				weixin_login_url = "/auth/authorize-use/weixin?next=http%3A%2F%2Fwww.zaih.com%2Ftopics%2F%3Fcity%3Dbeijing",
+				baidu_login_url = "/auth/authorize-use/baidu?next=http%3A%2F%2Fwww.zaih.com%2Ftopics%2F%3Fcity%3Dbeijing",
+				weixin_mp_login_url = "/auth/authorize-use/weixin_mp?next=http%3A%2F%2Fwww.zaih.com%2Ftopics%2F%3Fcity%3Dbeijing",
+				signup_url = "/auth/signup?next=http%3A%2F%2Fwww.zaih.com%2Ftopics%2F%3Fcity%3Dbeijing";
+		</script>
+		<script src="/WebContent/resource/common/js/Util.js"></script>
+		<!-- <script src="/WebContent/resource/common/js/teacherBase.js"></script> -->
+		<script src="/WebContent/resource/common/js/teacherMain.js"></script>
+
+		
+
+		<!-- end scripts -->
+	</body>
+
+</html>

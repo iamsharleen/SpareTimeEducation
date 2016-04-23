@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns="http://www.springframework.org/schema/beans"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd" >
+
+    <context:component-scan base-package="app"></context:component-scan>
+
+
+    <!-- 在Spring上下文中载入property文件信息 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="driverClassName" value="${jdbc.driverClass}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    
+    <!-- 配置sessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/><!-- 依赖的数据源 -->
+        <property name="hibernateProperties"><!-- hibernate的相关属性 -->
+            <value>
+                hibernate.dialect=org.hibernate.dialect.MySQLDialect
+                hibernate.show_sql=true
+                hibernate.format_sql=true
+                hibernate.hbm2ddl.auto=update
+            </value>
+        </property>
+        <property name="packagesToScan" ><!-- 扫描实体类所在的包，这此实体类是采用注解的方式 -->
+            <value>
+                common.entity,          
+                app.entity,
+
+            </value>
+        </property>  
+        
+    </bean>
+    
+   
+    
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <!-- 事务管理器 -->
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <!-- 事务通知 -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <!-- 
+        	配置事务的属性，如果事务的传播属性
+        	一般查询数据的方法都不需要启动事务，设置为只读
+        	一般增加，修改，删除都 需要启动事
+        	propagation是事务传播属性
+         -->
+        <tx:attributes>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="load*" read-only="true"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <!-- aop事务 -->
+    <aop:config>
+        <aop:pointcut id="serviceMethod" expression="execution(* app.*.service.impl.*.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
+    </aop:config>
+</beans>

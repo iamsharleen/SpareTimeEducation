@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>找微课</title>
+<script language="javascript" src="/spareTimeEdu/app/lib/jquery-1.11.3.min.js"></script>
+<script language="javascript" src="/spareTimeEdu/app/lib/angular.min.js"></script>
+<script language="javascript" src="/spareTimeEdu/app/findClasses/classList.js"></script>
+
+</head>
+<body>
+	<div ng-app="app" ng-controller="classListCtrl">
+		{{test}}
+		<div ng-repeat="item in classes">{{item.CLASS_NAME}}</div>
+		{{classes}}
+	</div>
+
+</body>
+</html>
