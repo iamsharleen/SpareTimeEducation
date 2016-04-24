@@ -1,22 +1,27 @@
 package system.utils;
 
-import java.lang.reflect.Type;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 @SuppressWarnings("rawtypes")
 public class JsonUtil {
 	
-	public static Map toMap(String jsonStr){
+	public static Map jsonToMap(String jsonStr){
+		ObjectMapper mapper = new ObjectMapper();
 		Map map=new HashMap();
-		if(null!=jsonStr && ""!=jsonStr){
-			Gson gson=new Gson();
-			Type type = new TypeToken<Map>() {}.getType();
-			map=gson.fromJson(jsonStr, type);
+		try {
+			map = (Map) mapper.readValue(jsonStr, HashMap.class);
+		} catch (JsonParseException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
 		return map;
 	}
 

@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * 所亦实体的父类
  * @author GYX
@@ -13,7 +15,8 @@ import javax.persistence.Id;
 @Entity
 public class BaseEntity {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid")
 	private String ID;
 
 	public String getID() {

@@ -1,6 +1,8 @@
 package system.action;
 
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -27,9 +29,14 @@ public class BaseAction extends ActionSupport implements ServletContextAware, Se
 	private HttpServletResponse resp;
 	private ServletContext ctx;
 	
-	public Map getParameter(String key){
-		String param=req.getParameter(key);
-		Map map=JsonUtil.toMap(param);
+	public Map getRequestMap(){
+		Enumeration pNames=req.getParameterNames(); 
+		Map map=new HashMap<>();
+		while(pNames.hasMoreElements()){
+			String name =(String) pNames.nextElement();
+			String value=req.getParameter(name);
+			map.put(name, value);
+		}
 		return map;
 	}
 	

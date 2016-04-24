@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import app.service.CourseService;
 import system.action.BaseAction;
 import system.entity.ResultObject;
+import system.utils.JsonUtil;
 
 @ParentPackage("json-default")
 @Component
@@ -36,9 +37,10 @@ public class CourseAction extends BaseAction{
 	@SuppressWarnings("rawtypes")
 	@Action(value="/getCourse")
 	public void queryCourseByCondition(){
-		Map map=getParameter("cond");
-		Map resultMap=courseService.queryCourseByCondition(map);
-		ResultObject result=new ResultObject(resultMap);
-		translateAndOutput(result);
+		Map map=getRequestMap();
+		String reqStr=(String) map.get("cond");
+		Map reqMap=JsonUtil.jsonToMap(reqStr);
+		Map resultMap=courseService.queryCourseByCondition(reqMap);
+		translateAndOutput(resultMap);
 	}
 }

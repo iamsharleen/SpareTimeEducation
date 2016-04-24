@@ -8,209 +8,192 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import system.entity.BaseEntity;
+
 @Entity
-@Table(name="course_info")
-public class CourseInfo {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer rowID;
-	private String CourseID;
-	private String status;
-	private String CourseTypeID;
-	private String Subject;
-	private Date StartDate;
-	private Date EndDate;
-	private String StudentType;
-	private String CityID;
-	private String Address;
-	private Double Price;
-	private Double Duration;
-	private String DurationUnitID;
-	private String DurationNote;
-	private Integer MaxAttendees;
-	private String KeyWords;
-	private String CourseBreif;
-	private String CourseCont;
-	private String TeachMethod;
-	private String TeachAreaNote;
-	private String PosterID;
-	private String TeacherID;
-	private String TeacherName;
-	private String TeacherTitle;
-	private String TeachProfile;
-	private Integer SeqNumber;
-	private Date CreateTime;
-	private Date LastEditTime;
+@Table(name="COURSE_INFO")
+public class CourseInfo extends BaseEntity{
+	private String CODE;
+	private String STATUS;
+	private String COURSE_TYPE_ID;
+	private String SUBJECT;
+	private Date START_TIME;
+	private Date END_TIME;
+	private Double DURATEION;
+	private String DURATION_UNIT;
+	private String DATE_NOTE;
+	private String STUDENT_TYPE;
+	private String CITY_ID;
+	private String ADDRESS;
+	private String ADDRESS_NOTE;
+	private Double PRICE;
+	private Integer MAX_ATTENDEES;
+	private String KEYWORD;
+	private String BRIEF;
+	private String CONTENT;
+	private String TEACH_METHOD;
+	private String POSTER_ID;
+	private String TEACHER_ID;
+	private String TEACHER_NAME;
+	private Integer SEQ_NUMBER;
+	private Date CREATE_TIME;
+	private Date LAST_EDIT_TIME;
+	public String getCODE() {
+		return CODE;
+	}
+	public String getSTATUS() {
+		return STATUS;
+	}
+	public String getCOURSE_TYPE_ID() {
+		return COURSE_TYPE_ID;
+	}
+	public String getSUBJECT() {
+		return SUBJECT;
+	}
+	public Date getSTART_TIME() {
+		return START_TIME;
+	}
+	public Date getEND_TIME() {
+		return END_TIME;
+	}
+	public Double getDURATEION() {
+		return DURATEION;
+	}
+	public String getDURATION_UNIT() {
+		return DURATION_UNIT;
+	}
+	public String getDATE_NOTE() {
+		return DATE_NOTE;
+	}
+	public String getSTUDENT_TYPE() {
+		return STUDENT_TYPE;
+	}
+	public String getCITY_ID() {
+		return CITY_ID;
+	}
+	public String getADDRESS() {
+		return ADDRESS;
+	}
+	public String getADDRESS_NOTE() {
+		return ADDRESS_NOTE;
+	}
+	public Double getPRICE() {
+		return PRICE;
+	}
+	public Integer getMAX_ATTENDEES() {
+		return MAX_ATTENDEES;
+	}
+	public String getKEYWORD() {
+		return KEYWORD;
+	}
+	public String getBRIEF() {
+		return BRIEF;
+	}
+	public String getCONTENT() {
+		return CONTENT;
+	}
+	public String getTEACH_METHOD() {
+		return TEACH_METHOD;
+	}
+	public String getPOSTER_ID() {
+		return POSTER_ID;
+	}
+	public String getTEACHER_ID() {
+		return TEACHER_ID;
+	}
+	public String getTEACHER_NAME() {
+		return TEACHER_NAME;
+	}
+	public Integer getSEQ_NUMBER() {
+		return SEQ_NUMBER;
+	}
+	public Date getCREATE_TIME() {
+		return CREATE_TIME;
+	}
+	public Date getLAST_EDIT_TIME() {
+		return LAST_EDIT_TIME;
+	}
+	public void setCODE(String cODE) {
+		CODE = cODE;
+	}
+	public void setSTATUS(String sTATUS) {
+		STATUS = sTATUS;
+	}
+	public void setCOURSE_TYPE_ID(String cOURSE_TYPE_ID) {
+		COURSE_TYPE_ID = cOURSE_TYPE_ID;
+	}
+	public void setSUBJECT(String sUBJECT) {
+		SUBJECT = sUBJECT;
+	}
+	public void setSTART_TIME(Date sTART_TIME) {
+		START_TIME = sTART_TIME;
+	}
+	public void setEND_TIME(Date eND_TIME) {
+		END_TIME = eND_TIME;
+	}
+	public void setDURATEION(Double dURATEION) {
+		DURATEION = dURATEION;
+	}
+	public void setDURATION_UNIT(String dURATION_UNIT) {
+		DURATION_UNIT = dURATION_UNIT;
+	}
+	public void setDATE_NOTE(String dATE_NOTE) {
+		DATE_NOTE = dATE_NOTE;
+	}
+	public void setSTUDENT_TYPE(String sTUDENT_TYPE) {
+		STUDENT_TYPE = sTUDENT_TYPE;
+	}
+	public void setCITY_ID(String cITY_ID) {
+		CITY_ID = cITY_ID;
+	}
+	public void setADDRESS(String aDDRESS) {
+		ADDRESS = aDDRESS;
+	}
+	public void setADDRESS_NOTE(String aDDRESS_NOTE) {
+		ADDRESS_NOTE = aDDRESS_NOTE;
+	}
+	public void setPRICE(Double pRICE) {
+		PRICE = pRICE;
+	}
+	public void setMAX_ATTENDEES(Integer mAX_ATTENDEES) {
+		MAX_ATTENDEES = mAX_ATTENDEES;
+	}
+	public void setKEYWORD(String kEYWORD) {
+		KEYWORD = kEYWORD;
+	}
+	public void setBRIEF(String bRIEF) {
+		BRIEF = bRIEF;
+	}
+	public void setCONTENT(String cONTENT) {
+		CONTENT = cONTENT;
+	}
+	public void setTEACH_METHOD(String tEACH_METHOD) {
+		TEACH_METHOD = tEACH_METHOD;
+	}
+	public void setPOSTER_ID(String pOSTER_ID) {
+		POSTER_ID = pOSTER_ID;
+	}
+	public void setTEACHER_ID(String tEACHER_ID) {
+		TEACHER_ID = tEACHER_ID;
+	}
+	public void setTEACHER_NAME(String tEACHER_NAME) {
+		TEACHER_NAME = tEACHER_NAME;
+	}
+	public void setSEQ_NUMBER(Integer sEQ_NUMBER) {
+		SEQ_NUMBER = sEQ_NUMBER;
+	}
+	public void setCREATE_TIME(Date cREATE_TIME) {
+		CREATE_TIME = cREATE_TIME;
+	}
+	public void setLAST_EDIT_TIME(Date lAST_EDIT_TIME) {
+		LAST_EDIT_TIME = lAST_EDIT_TIME;
+	}
 	
 	
-	public Integer getRowID() {
-		return rowID;
-	}
-	public void setRowID(Integer rowID) {
-		this.rowID = rowID;
-	}
-	public String getCourseID() {
-		return CourseID;
-	}
-	public void setCourseID(String courseID) {
-		CourseID = courseID;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public String getCourseTypeID() {
-		return CourseTypeID;
-	}
-	public void setCourseTypeID(String courseTypeID) {
-		CourseTypeID = courseTypeID;
-	}
-	public String getSubject() {
-		return Subject;
-	}
-	public void setSubject(String subject) {
-		Subject = subject;
-	}
-	public Date getStartDate() {
-		return StartDate;
-	}
-	public void setStartDate(Date startDate) {
-		StartDate = startDate;
-	}
-	public Date getEndDate() {
-		return EndDate;
-	}
-	public void setEndDate(Date endDate) {
-		EndDate = endDate;
-	}
-	public String getStudentType() {
-		return StudentType;
-	}
-	public void setStudentType(String studentType) {
-		StudentType = studentType;
-	}
-	public String getCityID() {
-		return CityID;
-	}
-	public void setCityID(String cityID) {
-		CityID = cityID;
-	}
-	public String getAddress() {
-		return Address;
-	}
-	public void setAddress(String address) {
-		Address = address;
-	}
-	public Double getPrice() {
-		return Price;
-	}
-	public void setPrice(Double price) {
-		Price = price;
-	}
-	public Double getDuration() {
-		return Duration;
-	}
-	public void setDuration(Double duration) {
-		Duration = duration;
-	}
-	public String getDurationUnitID() {
-		return DurationUnitID;
-	}
-	public void setDurationUnitID(String durationUnitID) {
-		DurationUnitID = durationUnitID;
-	}
-	public String getDurationNote() {
-		return DurationNote;
-	}
-	public void setDurationNote(String durationNote) {
-		DurationNote = durationNote;
-	}
-	public Integer getMaxAttendees() {
-		return MaxAttendees;
-	}
-	public void setMaxAttendees(Integer maxAttendees) {
-		MaxAttendees = maxAttendees;
-	}
-	public String getKeyWords() {
-		return KeyWords;
-	}
-	public void setKeyWords(String keyWords) {
-		KeyWords = keyWords;
-	}
-	public String getCourseBreif() {
-		return CourseBreif;
-	}
-	public void setCourseBreif(String courseBreif) {
-		CourseBreif = courseBreif;
-	}
-	public String getCourseCont() {
-		return CourseCont;
-	}
-	public void setCourseCont(String courseCont) {
-		CourseCont = courseCont;
-	}
-	public String getTeachMethod() {
-		return TeachMethod;
-	}
-	public void setTeachMethod(String teachMethod) {
-		TeachMethod = teachMethod;
-	}
-	public String getTeachAreaNote() {
-		return TeachAreaNote;
-	}
-	public void setTeachAreaNote(String teachAreaNote) {
-		TeachAreaNote = teachAreaNote;
-	}
-	public String getPosterID() {
-		return PosterID;
-	}
-	public void setPosterID(String posterID) {
-		PosterID = posterID;
-	}
-	public String getTeacherID() {
-		return TeacherID;
-	}
-	public void setTeacherID(String teacherID) {
-		TeacherID = teacherID;
-	}
-	public String getTeacherName() {
-		return TeacherName;
-	}
-	public void setTeacherName(String teacherName) {
-		TeacherName = teacherName;
-	}
-	public String getTeacherTitle() {
-		return TeacherTitle;
-	}
-	public void setTeacherTitle(String teacherTitle) {
-		TeacherTitle = teacherTitle;
-	}
-	public String getTeachProfile() {
-		return TeachProfile;
-	}
-	public void setTeachProfile(String teachProfile) {
-		TeachProfile = teachProfile;
-	}
-	public Integer getSeqNumber() {
-		return SeqNumber;
-	}
-	public void setSeqNumber(Integer seqNumber) {
-		SeqNumber = seqNumber;
-	}
-	public Date getCreateTime() {
-		return CreateTime;
-	}
-	public void setCreateTime(Date createTime) {
-		CreateTime = createTime;
-	}
-	public Date getLastEditTime() {
-		return LastEditTime;
-	}
-	public void setLastEditTime(Date lastEditTime) {
-		LastEditTime = lastEditTime;
-	}
+	
+	
 	
 	
 }
