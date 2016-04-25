@@ -5,6 +5,10 @@ public class DICT_PUB {
 	public static String BIZKEY_COURSE="COURSE";
 	public static String BIZKEY_ACTIVITY="ACTIVITY";
 	
+	public static String STUDENT_TYPE_CHILDREN="CHILDREN";
+	public static String STUDENT_TYPE_ADULT="ADULT";
+	public static String STUDENT_TYPE_BOTH="BOTH";
+	
 	public static String USER_TYPE_GENERAL="GENERAL";
 	public static String USER_TYPE_TEACHER="TEACHER";
 	public static String USER_TYPE_ORGANIZATION="ORGANIZATION";

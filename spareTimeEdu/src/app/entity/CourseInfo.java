@@ -17,7 +17,7 @@ import system.entity.BaseEntity;
 public class CourseInfo extends BaseEntity{
 	private String CODE;
 	private String STATUS;
-	private String COURSE_TYPE_ID;
+	private String COURSE_TYPE_CODE;
 	private String SUBJECT;
 	private Date START_TIME;
 	private Date END_TIME;
@@ -40,14 +40,16 @@ public class CourseInfo extends BaseEntity{
 	private Integer SEQ_NUMBER;
 	private Date CREATE_TIME;
 	private Date LAST_EDIT_TIME;
+	
+	
 	public String getCODE() {
 		return CODE;
 	}
 	public String getSTATUS() {
 		return STATUS;
 	}
-	public String getCOURSE_TYPE_ID() {
-		return COURSE_TYPE_ID;
+	public String getCOURSE_TYPE_CODE() {
+		return COURSE_TYPE_CODE;
 	}
 	public String getSUBJECT() {
 		return SUBJECT;
@@ -121,8 +123,8 @@ public class CourseInfo extends BaseEntity{
 	public void setSTATUS(String sTATUS) {
 		STATUS = sTATUS;
 	}
-	public void setCOURSE_TYPE_ID(String cOURSE_TYPE_ID) {
-		COURSE_TYPE_ID = cOURSE_TYPE_ID;
+	public void setCOURSE_TYPE_CODE(String cOURSE_TYPE_CODE) {
+		COURSE_TYPE_CODE = cOURSE_TYPE_CODE;
 	}
 	public void setSUBJECT(String sUBJECT) {
 		SUBJECT = sUBJECT;
