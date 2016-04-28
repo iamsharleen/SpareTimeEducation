@@ -3,30 +3,25 @@ package app.entity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import system.entity.BaseEntity;
+
 @Entity
 @Table(name="DISTRICT_INFO")
-public class DistrictInfo {
+public class DistrictInfo extends BaseEntity {
 	
-	private String ID;
 	private String CODE;
 	private String NAME;
 	private String CITY_CODE;
 	
-	
-	public String getID() {
-		return ID;
-	}
-	public String getCODE() {
-		return CODE;
-	}
 	public String getNAME() {
 		return NAME;
 	}
 	public String getCITY_CODE() {
 		return CITY_CODE;
 	}
-	public void setID(String iD) {
-		ID = iD;
+	
+	public String getCODE() {
+		return CODE;
 	}
 	public void setCODE(String cODE) {
 		CODE = cODE;

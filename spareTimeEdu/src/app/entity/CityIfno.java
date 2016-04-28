@@ -3,9 +3,11 @@ package app.entity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import system.entity.BaseEntity;
+
 @Entity
 @Table(name="CITY_INFO")
-public class CityIfno {
+public class CityIfno extends BaseEntity{
 	
 	private String CODE;
 	private String NAME;

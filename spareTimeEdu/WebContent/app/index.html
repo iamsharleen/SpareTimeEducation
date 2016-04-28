@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="zh-cn" ng-module="app" ng-controller="AppCtrl">
 <head>
-<meta chatset="utf-8">
-<title>在线教育</title>
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"/>
-
-<link rel="stylesheet" href="style/font-awesome.css" type="text/css">
-</head>
-<body>
-	<div ui-view></div>
+	<meta chatset="utf-8">
+	<title>鍦ㄧ嚎鏁欒偛</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"/>
 	
+	<link rel="stylesheet" href="style/font-awesome.css" type="text/css">
+	<link rel="stylesheet" href="style/teacherBase.css" type="text/css">
+
 	<script src="lib/jquery-1.11.3.min.js"></script>
 	<script src="lib/angular.min.js"></script>
+	<script src="lib/angular-ui-router.js"></script>
+	<script src="js/config.router.js"></script>
+</head>
+<body ng-app="app">
+	<div ng-include="'common/mobileMenuLeft.html'"></div>
+	<div ng-include="'common/mobileMenuRight.html'"></div>
+	
+	<div class="container">
+		<div ng-include="'common/mobileHeader.html'"></div>
+		<div ng-include="'common/header.html'"></div>
+		<div ui-view></div> 
+		<div ng-include="'common/footer.html'"></div>
+	</div>
+	 
+	
+	
 </body>
 </html>

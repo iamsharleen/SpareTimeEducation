@@ -1,0 +1,62 @@
+<meta chatset="utf-8">
+<div class="header" id="header">
+	<div class="column">
+		<!-- <a href="/" class="header-logo"></a> -->
+		<ul class="header-nav">
+			<li><span style="color: orange; font-size: 30px;">智联教育</span></li>
+			
+			<li><a href="searchTeacher" class="select-for">老师</a></li>
+			<li><a href="searchTeacher">课程</a></li>
+			<li><a href="searchTeacher">活动</a></li>
+			
+			<li data-action="nav-select">
+				<div class="drop-menu" data-show="false" style="display: none;">
+					<i class="arrow-up"></i>模块
+					<ul class="drop-list">
+						<li><a href="searchTeacher">找老师</a></li>
+						<li><a href="searchMicroClass">找微课</a></li>
+						<li><a href="/topics/?tag_id=353">找活动</a></li>
+					</ul>
+				</div>
+			</li>
+
+		</ul>
+
+		<div class="to-be-tutor">
+			<a target="_blank" href="/tutor_apply/">成为老师</a>
+		</div>
+		<div class="header-setting  login-status">
+			<div>
+				<a href="#" rel="nofollow" data-login="false">登录</a> <span class="split"></span> <a href="#" data-zhuge="顶导航-注册" rel="nofollow">注册</a>
+			</div>
+			<nav class="user_nav">
+				<ul>
+					<li><a href="#">用户名<span style="font-size: 10px;"
+						class="icon-chevron-down"></span></a>
+						<ul>
+							<li><a href="#">我的课程</a></li>
+							<li><a href="#">我的微课</a></li>
+							<li><a href="#">退出</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="header-setting">
+			<ul>
+				<li>
+					<form onsubmit="return false;" class="search">
+						<input type="text" name="keyWord" value="" placeholder="输入人名、主题关键字" autocomplete="off" class="search-content" />
+						<input type="submit" onclick="searchInCity(this)" value="搜索" class="search-btn" />
+					</form>
+				</li>
+			</ul>
+		</div>
+		<div class="app-download">
+			<!-- <a target="_blank" href="/app/"
+			class="btn-primary app-download-btn">下载客户端</a> -->
+		</div>
+
+	</div>
+
+</div>
