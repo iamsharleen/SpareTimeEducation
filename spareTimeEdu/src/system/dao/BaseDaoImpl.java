@@ -1,13 +1,17 @@
 package system.dao;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.Criteria;
+import javax.persistence.Table;
+
+import org.apache.commons.beanutils.BeanUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
@@ -21,6 +25,8 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import system.entity.BaseEntity;
+import system.entity.PageInfo;
+import system.utils.StringUtil;
 
 
 /**
@@ -256,7 +262,21 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 		return list;
 	}
 	
-	public List queryPageSql(final String sql,final Object[]params){
+	public List<Map> queryPageSql(String querySql,List params,PageInfo pageInfo){
+		final StringBuilder sql=new StringBuilder();
+		final List values=new ArrayList<>();
+		sql.append(querySql);
+		values.addAll(params);
+		if(null!=pageInfo){
+			int pageSize=pageInfo.getPageSize();
+			int start=pageInfo.getStart();
+			if(pageSize>-1 && start>-1){
+				sql.append(" limit ?,? ");
+				values.add(start);
+				values.add(pageSize);
+			}
+		}
+		
 		List list=null;
 		try {
 			list=getHibernateTemplate().executeFind(
@@ -264,25 +284,23 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 					public List doInHibernate(Session session) throws HibernateException{
 						Query query=null;
 						try {
-							query=session.createSQLQuery(sql);
-							if (params != null) {
-								for (int i = 0; i < params.length; i++) {
-									query.setParameter(i, params[i]);
+							query=session.createSQLQuery(sql.toString());
+							if (values != null) {
+								for (int i = 0; i < values.size(); i++) {
+									query.setParameter(i, values.get(i));
 								}
 							}
-							/*//���÷�ҳ����
-							if (start >= 0 && pageSize > 0) {
-								query.setFirstResult(start);
-								query.setMaxResults(pageSize);
-							}*/
+							query.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
+							return query.list();
 						} catch (Throwable ex) {
 							ex.printStackTrace();
+						}finally{
+							session.flush();
+							session.clear();
 						}
-						query.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
-						return query.list();
+						return null;
 					}
 				});
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -301,15 +319,34 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 
 	@Override
 	public Object get(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		String tableName=getTableName(entityClass);
+		String querySql="select * from "+tableName+" where ID= ?";
+		List params=new ArrayList();
+		params.add(id);
+		List<Map> list=querySql(querySql, params);
+		Object obj=new Object();
+		if(list!=null && list.size()>0){
+			Map map=list.get(0);
+			try {
+				BeanUtils.copyProperties(obj, map);
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
+		}
+		return obj;
 	}
 
 
 
 	@Override
 	public void update(BaseEntity... pojos) {
-		// TODO Auto-generated method stub
+		for(BaseEntity pojo:pojos){
+			getHibernateTemplate().update(pojo);
+		}
+		getHibernateTemplate().flush();
+		getHibernateTemplate().clear();
 		
 	}
 
@@ -317,23 +354,43 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 
 	@Override
 	public void save(BaseEntity... pojos) {
-		// TODO Auto-generated method stub
+		for(BaseEntity pojo:pojos){
+			getHibernateTemplate().save(pojo);
+		}
+		getHibernateTemplate().flush();
+		getHibernateTemplate().clear();
 		
 	}
 
 
 
 	@Override
-	public void delete(String id) {
-		// TODO Auto-generated method stub
-		
+	public void delete(String... ids) {
+		String tableName=getTableName(entityClass);
+		StringBuilder sql=new StringBuilder();
+		sql.append("delete from ").append(tableName).append(" where ID ");
+		if(ids.length>1){
+			sql.append(" in (").append(StringUtil.getInStr(ids)).append(" )");
+		}else{
+			sql.append("= "+ids);
+		}
+		Query query=getSession().createSQLQuery(sql.toString());
+		query.executeUpdate();
 	}
 
 
 
 	@Override
-	public List querySql(String sql, Object[] params) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Map> querySql(String sql, List params) {
+		List<Map> list=queryPageSql(sql, params, null);
+		return list;
+	}
+	
+	protected static String getTableName(Class entityClass) {
+		Table table=(Table) entityClass.getAnnotation(Table.class);
+		if(table==null){
+			System.out.println("table name is null!!");
+		}
+		return table.name();
 	}
 }

@@ -1,148 +1,98 @@
 <!-- <div class="text-md">
-		<div style="overflow:auto" class="b-a">
-			<div class="hbox bg-primary b-b">
-				<div class="col w-sm font-bold text-center v-middle">
-					<div class="checkbox">
-						<label class="i-checks">
-			                <input type="checkbox" ng-click="selectAll()" ng-checked="temp.isAll">
-			                <i></i>
-			            </label>
-			            <span>序号</span>
-					</div>
-				</div>
-				<div class="col w-sm font-bold text-center v-middle b-l">业务日期<span class="text-danger">*</span></div>
-				<div class="col w-sm font-bold text-center v-middle b-l">费用金额</div>
-				<div class="col w-sm font-bold text-center v-middle b-l">费用归属人</div>
-				<div class="col w-sm font-bold text-center v-middle b-l">费用归属部门<span class="text-danger">*</span></div>
-				<div class="col w-sm font-bold text-center v-middle b-l">预算名称<span class="text-danger">*</span></div>
-				<div class="col w-sm font-bold text-center v-middle b-l">预算科目<span class="text-danger">*</span></div>
-				<div class="col w-sm font-bold text-center v-middle b-l">科目可用余额</div>
-				<div class="col w-sm font-bold text-center v-middle b-l">可用余额</div>
-				<div class="col w-sm font-bold text-center v-middle b-l"
-				ng-if="publicexpApportion[0].ACCOUNTING_METHOD!='SJFY'">单价</div>
-				<div class="col w-sm font-bold text-center v-middle b-l"
-				ng-if="publicexpApportion[0].ACCOUNTING_METHOD!='SJFY'">总量</div>
-				<div class="col w-sm font-bold text-center v-middle b-l" 
-				ng-if="publicexpApportion[0].ACCOUNTING_METHOD=='GZL'">
-						分摊数量<span class="text-danger">*</span>
-				</div>
-				<div class="col w-sm font-bold text-center v-middle b-l"
-				ng-if="publicexpApportion[0].ACCOUNTING_METHOD!='SJFY'">单位</div>
-				<div class="col w-sm font-bold text-center v-middle b-l"
-				ng-if="publicexpApportion[0].ACCOUNTING_METHOD=='PJ'">占比（%）</div>
-				<div class="col w-sm font-bold text-center v-middle b-l">分摊金额<span class="text-danger">*</span></div>
-				<div class="col w font-bold text-center v-middle b-l">贷方会计科目<span class="text-danger">*</span></div>
-				<div class="col w font-bold text-center v-middle b-l">借方会计科目<span class="text-danger">*</span></div>
-				<div class="col w font-bold text-center v-middle b-l" ng-if="!temp.isKeepAccount">核算账号(记账)<span class="text-danger">*</span></div>
-				<div class="col w font-bold text-center v-middle b-l" ng-if="!temp.isKeepAccount">可用余额(记账)<span class="text-danger">*</span></div>
-				<div class="col w font-bold text-center v-middle b-l" ng-if="!temp.isKeepAccount">预算科目(记账)<span class="text-danger">*</span></div>
-				<div class="col w font-bold text-center v-middle b-l" ng-if="!temp.isKeepAccount">科目可用余额(记账)<span class="text-danger">*</span></div>
-			</div>
-			<div class="hbox b-b" ng-repeat="item in publicexpApportion track by $index">
-				<div class="col w-sm text-center v-middle">
-					<div class="checkbox">
-						<label class="i-checks">
-			                <input type="checkbox" ng-click="selectSerial($index)" ng-checked="temp.serial[$index]">
-			                <i></i>
-			            </label>
-			            <span ng-bind="$index+1"></span>
-					</div>
-				</div>
-				<div class="col w-sm text-center b-l v-middle">
-					<span ng-bind="item.BUSINESS_DATE | limitTo:10"></span>
-				</div>
-				<div class="col w-sm text-center b-l v-middle">
-					<span ng-bind="item.PUBLICEXP_AMT | formatFilter"></span>
-				</div>
-				<div class="col w-sm text-center b-l v-middle">
-					<conow-staffchoose ng-model="temp.staffInfo[$index]" is-multi="false" is-obj="true" is-diy="true"
-					call-back="selectPerson(person, $index)">
-						<modal-trigger icon="fa fa-user">
-						    <span ng-bind="temp.staffInfo[$index].NAME"></span>
-						</modal-trigger>
-					</conow-staffchoose>
-				</div>
-				<div class="col w-sm text-center b-l v-middle">
-					<conow-orgchoose ng-model="temp.orgUnit[$index]" name="orgUnit{{$index}}"  is-multi="false" is-obj="true" is-diy="true"
-					call-back="selectOrgUnit(org, $index)"  >
-						<modal-trigger icon="ci-org">
-						    <span ng-bind="temp.orgUnit[$index].ORG_UNIT_SHORT_NAME"></span>
-						</modal-trigger>
-					</conow-orgchoose>
-				</div>
-				<div class="col w-sm text-center b-l v-middle">
-					<span class="text-primary cursor-h" ng-click="selectExeBudget(item.PUBLICEXP_ORG, $index)"
-					ng-bind="(item.NAME=='' || item.NAME==undefined)?'选择':item.NAME"  ></span>
-				</div>
-				<div class="col w-sm text-center b-l v-middle">
-					<span class="text-primary cursor-h" ng-click="selectBudgetItem(item.BUDGET_ID, $index)"
-					ng-bind="(item.BUDGET_ITEM=='' || item.BUDGET_ITEM==undefined)?'选择':item.BUDGET_ITEM" ></span>
-				</div>
-				<div class="col w-sm text-center b-l v-middle">
-					<span ng-bind="item.ITEM_AVAILABLE_BALANCE | currency:'￥'"></span>
-				</div>
-				<div class="col w-sm text-center b-l v-middle">
-					<span ng-bind="item.AVAILABLE_BALANCE | currency:'￥'"></span>
-				</div>
-				<div class="col w-sm text-center b-l v-middle"
-				ng-if="item.ACCOUNTING_METHOD!='SJFY'">
-					<span ng-bind="item.UNIT_PRICE | formatFilter"></span>
-				</div>
-				<div class="col w-sm text-center b-l v-middle"
-				ng-if="item.ACCOUNTING_METHOD!='SJFY'">
-					<span ng-bind="item.TOTALS_QUANTITY | formatFilter"></span>
-				</div>
-				<div class="col w-sm text-center b-l v-middle"
-				ng-if="item.ACCOUNTING_METHOD=='GZL'">
-					<input ng-model="item.APPORTION_COUNT" type="text" 
-					class="form-control w-full h-full h40" name="APPORTION_COUNT{{$index}}" async-field 
-					numeric="{decimals:0,groupFormatting:true}" 
-					required placeholder="输入..." ng-blur="countApportionAmt($index)">
-				</div>
-				<div class="col w-sm text-center b-l v-middle"
-				ng-if="item.ACCOUNTING_METHOD!='SJFY'">
-					<span ng-bind="item.MEASURE_UNIT"></span>
-				</div>
-				<div class="col w-sm text-center b-l v-middle"
-				ng-if="item.ACCOUNTING_METHOD=='PJ'">
-					<input ng-model="item.APPORTION_SCALE" type="text" 
-					class="form-control w-full h-full h40" name="APPORTION_SCALE{{$index}}" async-field
-					numeric="{decimals:2,groupFormatting:true}" 
-					required placeholder="输入..." ng-blur="countApportionAmtByScale(item)">
-				</div>
-				<div class="col w-sm text-center b-l v-middle">
-					<input ng-model="item.APPORTION_AMT" type="text" 
-					class="form-control w-full h-full h40" name="APPORTION_AMT{{$index}}" async-field
-					numeric="{decimals:2,groupFormatting:true}" 
-					required placeholder="输入..." custom-rule
-					custom-rule-valid="{{validApportionAmt(item.PUBLICEXP_ENTRY_ID, item.PUBLICEXP_AMT)}}" 
-					custom-rule-msg="{{temp.msg[$index]}}" 
-					custom-rule-ignore="false">
-				</div>
-				<div class="col w text-center b-l v-middle">
-					<conow-account-view-new exe-budget-id="item.BIZ_ID" account-code="item.CACCOUNT_VIEW_CODE"
-					group-code="item.CASSTACT_TYPE_GROUP_CODE" type-code="item.CASSTACT_TYPE_CODE"
-					data="item.CVIEW" subject-type="OUT" show-name="选择贷方科目" modal-name="会计科目"
-					ng-if="item.BIZ_ID" call-back="callFn(data, exeBudget, $index)"></conow-account-view-new>
-				</div>
-				<div class="col w text-center b-l v-middle">
-					<conow-account-view-new exe-budget-id="item.BIZ_ID" account-code="item.DACCOUNT_VIEW_CODE"
-					group-code="item.DASSTACT_TYPE_GROUP_CODE" type-code="item.DASSTACT_TYPE_CODE"
-					data="item.DVIEW" subject-type="OUT" show-name="选择借方科目" modal-name="会计科目"
-					ng-if="item.BIZ_ID" call-back="callFn(data, exeBudget, $index)"></conow-account-view-new>
-				</div>
-				<div class="col w text-center b-l v-middle text-primary" ng-if="!temp.isKeepAccount"
-				ng-bind="item.KEEP_BUDGET_CODE+item.KEEP_BUDGET_NAME"></div>
-				<div class="col w text-center b-l v-middle" ng-if="!temp.isKeepAccount">
-					<span ng-bind="item.KEEP_AVAILABLE_BALANCE | currency:'￥'"></span>
-				</div>
-				<div class="col w text-center b-l v-middle" ng-if="!temp.isKeepAccount">
-					<span class="text-primary cursor-h" ng-click="selectKeepBudgetItem(item.KEEP_BUDGET_ID, $index)"
-					ng-bind="(!item.KEEP_BUDGET_ITEM && item.KEEP_BUDGET_ID)?'选择':item.KEEP_BUDGET_ITEM" ></span>
-				</div>
-				<div class="col w text-center b-l v-middle" ng-if="!temp.isKeepAccount">
-					<span ng-bind="item.KEEP_ITEM_AVAILABLE_BALANCE | currency:'￥'"></span>
-				</div>
-			</div>
-		</div>
-	</div> -->
+								<div style="overflow:auto;" class="b-a">
+									<div class="hbox bg-primary b-b">
+										<div class="col w-sm font-bold text-center v-middle">
+											<div class="checkbox">
+												<label class="i-checks">
+									                <input type="checkbox" ng-click="selectAll()" ng-checked="temp.isAll">
+									                <i></i>
+									            </label>
+									            <span>序号</span>
+											</div>
+										</div>
+										<div class="col w-sm font-bold text-center v-middle b-l">业务日期<span class="text-danger">*</span></div>
+										<div class="col w-sm font-bold text-center v-middle b-l">单价</div>
+										<div class="col w-sm font-bold text-center v-middle b-l">总量</div>
+										<div class="col w-sm font-bold text-center v-middle b-l">单位</div>
+										<div class="col w-sm font-bold text-center v-middle b-l">费用金额<span class="text-danger">*</span></div>
+										<div class="col w font-bold text-center v-middle b-l">支付账户<span class="text-danger">*</span></div>
+										<div class="col w-sm font-bold text-center v-middle b-l">收款方<span class="text-danger">*</span></div>
+										<div class="col w-sm font-bold text-center v-middle b-l">费用归属人</div>
+										<div class="col w-sm font-bold text-center v-middle b-l">费用归属部门</div>
+										<div class="col w-sm font-bold text-center v-middle b-l">摘要</div>
+									</div>
+									<div class="hbox b-b h40" ng-repeat="item in publicexp.publicexpEntry track by $index">
+										<div class="col w-sm text-center v-middle">
+											<div class="checkbox">
+												<label class="i-checks">
+									                <input type="checkbox" ng-click="selectSerial($index)" ng-checked="temp.serial[$index]">
+									                <i></i>
+									            </label>
+									            <span ng-bind="$index+1"></span>
+											</div>
+										</div>
+										<div class="col w-sm text-center b-l v-middle">
+											<conow-date-select selected-date="item.BUSINESS_DATE"
+												params="{comfBtn:false,halfDay:false,format:'YYYY-MM-DD'}"
+												class="padder-v-n" validity-watcher tabindex="0" required name="BUSINESS_DATE{{$index}}"  ng-model="item.BUSINESS_DATE">
+												<span ng-bind="item.BUSINESS_DATE | limitTo:10"></span>
+											</conow-date-select>
+										</div>
+										<div class="col w-sm text-center b-l v-middle">
+											<input ng-model="item.UNIT_PRICE" type="text" 
+											class="form-control w-full h-full h40" name="UNIT_PRICE{{$index}}" async-field 
+											numeric="{decimals:2,groupFormatting:true}" 
+											placeholder="输入..." ng-blur="changeAmt(item)">
+										</div>
+										<div class="col w-sm text-center b-l v-middle">
+											<input ng-model="item.TOTALS_QUANTITY" type="text" 
+											class="form-control w-full h-full h40" name="TOTALS_QUANTITY{{$index}}" async-field 
+											numeric="{decimals:2,groupFormatting:true}" 
+											placeholder="输入..." ng-blur="changeAmt(item)">
+										</div>
+										<div class="col w-sm text-center b-l v-middle">
+											<input ng-model="item.MEASURE_UNIT" type="text" 
+											class="form-control w-full h-full h40" name="MEASURE_UNIT{{$index}}" async-field 
+											placeholder="输入...">
+											<span ng-bind="item.MEASURE_UNIT"></span>
+										</div>
+										<div class="col w-sm text-center b-l v-middle">
+											<input ng-model="item.PUBLICEXP_AMT" type="text" 
+											class="form-control w-full h-full h40" name="PUBLICEXP_AMT{{$index}}" async-field 
+											required numeric="{decimals:2,groupFormatting:true}" 
+											placeholder="输入...">
+										</div>
+										<div class="col w text-center b-l v-middle">
+											<span class="text-primary cursor-h word-wrap" ng-bind="(item.BANK_ACCOUNT=='' 
+											|| item.BANK_ACCOUNT==undefined)?'选择支付账户':item.BANK_ACCOUNT"
+											ng-click="payAccountOpen($index)" name="BANK_ACCOUNT{{$index}}"></span>
+										</div>
+										<div class="col w-sm text-center b-l v-middle">
+											<input ng-model="item.PUBLICEXP_PAYEE" type="text" 
+											class="form-control w-full h-full h40" name="PUBLICEXP_PAYEE{{$index}}" async-field 
+											required placeholder="输入..." >
+										</div>
+										<div class="col w-sm text-center b-l v-middle">
+											<conow-staffchoose ng-model="temp.staffInfo[$index]" is-multi="false" is-obj="true" is-diy="true"
+											call-back="selectPerson(person, $index)">
+												<modal-trigger icon="fa fa-user">
+												    <span ng-bind="temp.staffInfo[$index].NAME"></span>
+												</modal-trigger>
+											</conow-staffchoose>
+										</div>
+										<div class="col w-sm text-center b-l v-middle">
+											<conow-orgchoose ng-model="temp.orgUnit[$index]" is-multi="false" is-obj="true" is-diy="true"
+											call-back="selectOrgUnit(org, $index)">
+												<modal-trigger icon="ci-org">
+												    <span ng-bind="temp.orgUnit[$index].ORG_UNIT_SHORT_NAME"></span>
+												</modal-trigger>
+											</conow-orgchoose>
+										</div>
+										<div class="col w-sm text-center b-l v-middle">
+											<input ng-model="item.MEMO" type="text" 
+											class="form-control w-full h-full h40" name="MEMO{{$index}}" async-field 
+											placeholder="输入...">
+										</div>
+									</div>
+								</div>
+							</div> -->

@@ -29,9 +29,6 @@ public class BaseAction extends ActionSupport implements ServletContextAware, Se
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
 	private ServletContext ctx;
-
-	
-	private static ThreadLocal<RequestContext> contextThreadLocal=new ThreadLocal<RequestContext>();
 	
 	public Map getRequestMap(){
 		Enumeration pNames=req.getParameterNames(); 

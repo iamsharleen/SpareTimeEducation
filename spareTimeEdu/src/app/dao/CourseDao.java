@@ -16,7 +16,7 @@ public interface CourseDao extends BaseDao<CourseInfo, Serializable>{
 	
 	List<CourseInfo> queryCourseById(String id);
 
-	void queryCourseList(String bizKey);
+	List<Map> queryCourseList(String bizKey);
 	
 
 }

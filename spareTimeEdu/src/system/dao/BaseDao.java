@@ -3,10 +3,12 @@ package system.dao;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.LockMode;
 
 import system.entity.BaseEntity;
+import system.entity.PageInfo;
 
 /**
  * ����Dao�ĸ���
@@ -19,9 +21,9 @@ public interface BaseDao<T, PK extends Serializable> {
 	public Object get(String id);
 	public void update(BaseEntity... pojos);
 	public void save(BaseEntity... pojos);
-	public void delete(String id);
-	public List querySql(String sql,Object[]params);
-	public List queryPageSql(String sql,Object[]params);
+	public void delete(String... id);
+	public List<Map> querySql(String sql,List params);
+	public List<Map> queryPageSql(String sql,List params,PageInfo pageInfo);
 	/**
 	 * ��������ȡʵ�塣���û����Ӧ��ʵ�壬���� null��
 	 * 

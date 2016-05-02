@@ -4,6 +4,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 public final class PageInfo {
 	private int page;
+	private int start;
 	private int pageSize;
 	private long count;
 
@@ -41,5 +42,10 @@ public final class PageInfo {
 	public int getMaxNum(){
 		return getPageSize();
 	}
+	public int getStart() {
+		return (page-1)*pageSize;
+	}
+	
+	
 	
 }

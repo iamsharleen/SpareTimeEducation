@@ -38,19 +38,21 @@ public class CourseDaoImpl extends BaseDaoImpl<CourseInfo, Serializable> impleme
 
 	@SuppressWarnings({ "rawtypes", "unused" })
 	@Override
-	public void queryCourseList(String bizKey) {
-		final StringBuilder sql=new StringBuilder();
-		final List params=new ArrayList();
+	public List<Map> queryCourseList(String bizKey) {
+		StringBuilder sql=new StringBuilder();
+		List params=new ArrayList();
 		CourseInfo cc=new CourseInfo();
 //		cc.setSUBJECT("aaaaaaaaaa");
 //		cc.setCODE("22222");
 //		save(cc);
 		sql.append("select * from COURSE_INFO");
-		CourseInfo c=get("111");
-		List<Map>list=find(sql.toString(),params.toArray(), -1, -1);
+		List<Map>list=querySql(sql.toString(), params);
+		
+		CourseInfo info=(CourseInfo) get("111");
 		
 		//List<Map>list=h.queryPageSql();
 		System.out.println(list);
+		return list;
 	}
 
 }

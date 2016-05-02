@@ -63,12 +63,9 @@ public class HibernateDao extends HibernateDaoSupport implements DBDao {
 
 	@Override
 	public List<Map> queryPageSql(SQLHelper sqlHelper) {
-		RequestContext requestContext=RequestContext.getContext();
-		PageInfo pageInfo=requestContext.getPageInfo();
+		PageInfo pageInfo=null;
+		pageInfo=RequestContext.getPageInfo();
 		
-		if(requestContext.getRequest()==null){
-			pageInfo=new PageInfo(1,10);
-		}
 		if(pageInfo==null){
 			System.out.println("cannot find pagination!!!!");
 		}

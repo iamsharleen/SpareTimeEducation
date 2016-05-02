@@ -30,8 +30,8 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public List<Map> queryCourseList(Map map) {
 		String bizKey=(String) map.get("bizKey");
-		courseDao.queryCourseList(bizKey);
-		return null;
+		List<Map> list=courseDao.queryCourseList(bizKey);
+		return list;
 	}
 
 }
