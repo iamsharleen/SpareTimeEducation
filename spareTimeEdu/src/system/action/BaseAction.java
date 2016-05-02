@@ -16,10 +16,11 @@ import org.apache.struts2.util.ServletContextAware;
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionSupport;
 
+import system.common.RequestContext;
 import system.entity.ResultObject;
 import system.utils.JsonUtil;
 /**
- * ËùÓÐActionµÄ¸¸Àà½Ó¿Ú
+ * ï¿½ï¿½ï¿½ï¿½Actionï¿½Ä¸ï¿½ï¿½ï¿½Ó¿ï¿½
  * @author Administrator
  *
  */
@@ -28,6 +29,9 @@ public class BaseAction extends ActionSupport implements ServletContextAware, Se
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
 	private ServletContext ctx;
+
+	
+	private static ThreadLocal<RequestContext> contextThreadLocal=new ThreadLocal<RequestContext>();
 	
 	public Map getRequestMap(){
 		Enumeration pNames=req.getParameterNames(); 
