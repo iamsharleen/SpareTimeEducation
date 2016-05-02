@@ -16,7 +16,7 @@ angular.module('courseList',[]).controller('courseListCtrl',['$scope','$http',fu
 //	$http.defaults.headers.post["Content-Type"]="application/x-www-form-urlencoded";
 		var req = {
 				 method: 'POST',
-				 url: '/spareTimeEdu/course/getCourse',
+				 url: '/spareTimeEdu/course/getCourseList',
 				 headers: {
 //					 'Accept':'*/*',
 					 'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',

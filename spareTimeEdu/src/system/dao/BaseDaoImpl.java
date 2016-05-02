@@ -20,9 +20,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import system.entity.BaseEntity;
+
 
 /**
- * ËùÓÐDaoÊµÏÖÀàµÄ¸¸Àà
+ * ï¿½ï¿½ï¿½ï¿½DaoÊµï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½
  * @author GYX
  *
  */
@@ -35,10 +37,10 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 		super.setSessionFactory(sessionFactory);
 	}
 
-	// ÊµÌåÀàÀàÐÍ(ÓÉ¹¹Ôì·½·¨×Ô¶¯¸³Öµ)
+	// Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½É¹ï¿½ï¿½ì·½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Öµ)
 	private Class<T> entityClass;
 
-	// ¹¹Ôì·½·¨£¬¸ù¾ÝÊµÀýÀà×Ô¶¯»ñÈ¡ÊµÌåÀàÀàÐÍ
+	// ï¿½ï¿½ï¿½ì·½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½È¡Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public BaseDaoImpl() {
 		this.entityClass = null;
 		Class c = getClass();
@@ -48,111 +50,113 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 			this.entityClass = (Class<T>) p[0];
 		}
 	}
+	
+	
 
-	// -------------------- »ù±¾¼ìË÷¡¢Ôö¼Ó¡¢ÐÞ¸Ä¡¢É¾³ý²Ù×÷ --------------------
+	// -------------------- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½Þ¸Ä¡ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ --------------------
 
-	// ¸ù¾ÝÖ÷¼ü»ñÈ¡ÊµÌå¡£Èç¹ûÃ»ÓÐÏàÓ¦µÄÊµÌå£¬·µ»Ø null¡£
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Êµï¿½å¡£ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Êµï¿½å£¬ï¿½ï¿½ï¿½ï¿½ nullï¿½ï¿½
 	public T get(PK id) {
 		return (T) getHibernateTemplate().get(entityClass, id);
 	}
 
-	// ¸ù¾ÝÖ÷¼ü»ñÈ¡ÊµÌå²¢¼ÓËø¡£Èç¹ûÃ»ÓÐÏàÓ¦µÄÊµÌå£¬·µ»Ø null¡£
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Êµï¿½å²¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Êµï¿½å£¬ï¿½ï¿½ï¿½ï¿½ nullï¿½ï¿½
 	public T getWithLock(PK id, LockMode lock) {
 		T t = (T) getHibernateTemplate().get(entityClass, id, lock);
 		if (t != null) {
-			this.flush(); // Á¢¼´Ë¢ÐÂ£¬·ñÔòËø²»»áÉúÐ§¡£
+			this.flush(); // ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
 		}
 		return t;
 	}
 
-	// ¸ù¾ÝÖ÷¼ü»ñÈ¡ÊµÌå¡£Èç¹ûÃ»ÓÐÏàÓ¦µÄÊµÌå£¬Å×³öÒì³£¡£
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Êµï¿½å¡£ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Êµï¿½å£¬ï¿½×³ï¿½ï¿½ì³£ï¿½ï¿½
 	public T load(PK id) {
 		return (T) getHibernateTemplate().load(entityClass, id);
 	}
 
-	// ¸ù¾ÝÖ÷¼ü»ñÈ¡ÊµÌå²¢¼ÓËø¡£Èç¹ûÃ»ÓÐÏàÓ¦µÄÊµÌå£¬Å×³öÒì³£¡£
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Êµï¿½å²¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Êµï¿½å£¬ï¿½×³ï¿½ï¿½ì³£ï¿½ï¿½
 	public T loadWithLock(PK id, LockMode lock) {
 		T t = (T) getHibernateTemplate().load(entityClass, id, lock);
 		if (t != null) {
-			this.flush(); // Á¢¼´Ë¢ÐÂ£¬·ñÔòËø²»»áÉúÐ§¡£
+			this.flush(); // ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
 		}
 		return t;
 	}
 
-	// »ñÈ¡È«²¿ÊµÌå¡£
+	// ï¿½ï¿½È¡È«ï¿½ï¿½Êµï¿½å¡£
 	public List<T> loadAll() {
 		return (List<T>) getHibernateTemplate().loadAll(entityClass);
 	}
 
 	// loadAllWithLock() ?
 
-	// ¸üÐÂÊµÌå
+	// ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	public void update(T entity) {
 		getHibernateTemplate().update(entity);
 	}
 
-	// ¸üÐÂÊµÌå²¢¼ÓËø
+	// ï¿½ï¿½ï¿½ï¿½Êµï¿½å²¢ï¿½ï¿½ï¿½ï¿½
 	public void updateWithLock(T entity, LockMode lock) {
 		getHibernateTemplate().update(entity, lock);
-		this.flush(); // Á¢¼´Ë¢ÐÂ£¬·ñÔòËø²»»áÉúÐ§¡£
+		this.flush(); // ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
 	}
 
-	// ´æ´¢ÊµÌåµ½Êý¾Ý¿â
+	// ï¿½æ´¢Êµï¿½åµ½ï¿½ï¿½Ý¿ï¿½
 	public void save(T entity) {
 		getHibernateTemplate().save(entity);
 	}
 
-	// saveWithLock()£¿
+	// saveWithLock()ï¿½ï¿½
 
-	// Ôö¼Ó»ò¸üÐÂÊµÌå
+	// ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	public void saveOrUpdate(T entity) {
 		getHibernateTemplate().saveOrUpdate(entity);
 	}
 
-	// Ôö¼Ó»ò¸üÐÂ¼¯ºÏÖÐµÄÈ«²¿ÊµÌå
+	// ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ðµï¿½È«ï¿½ï¿½Êµï¿½ï¿½
 	public void saveOrUpdateAll(Collection<T> entities) {
 		getHibernateTemplate().saveOrUpdateAll(entities);
 	}
 
-	// É¾³ýÖ¸¶¨µÄÊµÌå
+	// É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	public void delete(T entity) {
 		getHibernateTemplate().delete(entity);
 	}
 
-	// ¼ÓËø²¢É¾³ýÖ¸¶¨µÄÊµÌå
+	// ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	public void deleteWithLock(T entity, LockMode lock) {
 		getHibernateTemplate().delete(entity, lock);
-		this.flush(); // Á¢¼´Ë¢ÐÂ£¬·ñÔòËø²»»áÉúÐ§¡£
+		this.flush(); // ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
 	}
 
-	// ¸ù¾ÝÖ÷¼üÉ¾³ýÖ¸¶¨ÊµÌå
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö¸ï¿½ï¿½Êµï¿½ï¿½
 	public void deleteByKey(PK id) {
 		this.delete(this.load(id));
 	}
 
-	// ¸ù¾ÝÖ÷¼ü¼ÓËø²¢É¾³ýÖ¸¶¨µÄÊµÌå
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	public void deleteByKeyWithLock(PK id, LockMode lock) {
 		this.deleteWithLock(this.load(id), lock);
 	}
 
-	// É¾³ý¼¯ºÏÖÐµÄÈ«²¿ÊµÌå
+	// É¾ï¿½ï¿½ï¿½ï¿½Ðµï¿½È«ï¿½ï¿½Êµï¿½ï¿½
 	public void deleteAll(Collection<T> entities) {
 		getHibernateTemplate().deleteAll(entities);
 	}
 
 	// -------------------- HSQL ----------------------------------------------
 
-	// Ê¹ÓÃHSQLÓï¾äÖ±½ÓÔö¼Ó¡¢¸üÐÂ¡¢É¾³ýÊµÌå
+	// Ê¹ï¿½ï¿½HSQLï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Â¡ï¿½É¾ï¿½ï¿½Êµï¿½ï¿½
 	public int bulkUpdate(String queryString) {
 		return getHibernateTemplate().bulkUpdate(queryString);
 	}
 
-	// Ê¹ÓÃ´ø²ÎÊýµÄHSQLÓï¾äÔö¼Ó¡¢¸üÐÂ¡¢É¾³ýÊµÌå
+	// Ê¹ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½HSQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Â¡ï¿½É¾ï¿½ï¿½Êµï¿½ï¿½
 	public int bulkUpdate(String queryString, Object[] values) {
 		return getHibernateTemplate().bulkUpdate(queryString, values);
 	}
 
-	// Ê¹ÓÃHSQLÓï¾ä¼ìË÷Êý¾Ý
+	// Ê¹ï¿½ï¿½HSQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List find(String queryString) {
 		return getHibernateTemplate().find(queryString);
 //		final StringBuilder sql=new StringBuilder();
@@ -180,18 +184,18 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 		
 	}
 
-	// Ê¹ÓÃHSQLÓï¾ä·ÖÒ³¼ìË÷Êý¾Ý
+	// Ê¹ï¿½ï¿½HSQLï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List find(String queryString, int start, int pageSize) {
 		return find(queryString, null, start, pageSize);
 	}
 	/**
-	 * »ñµÃ·ûºÏÌõ¼þµÄÐÐÊý
+	 * ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public long getRowCount(String queryString){
 		return getRowCount(queryString,null);
 	}
 	/**
-	 * »ñµÃ·ûºÏÌõ¼þµÄÐÐÊý
+	 * ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public long getRowCount(String queryString,Object[] values){
 		List list = getHibernateTemplate().find(queryString,values);
@@ -200,13 +204,13 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 		}
 		return 0;
 	}
-	// Ê¹ÓÃ´ø²ÎÊýµÄHSQLÓï¾ä¼ìË÷Êý¾Ý
+	// Ê¹ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½HSQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List find(String queryString, Object[] values) {
 		return getHibernateTemplate().find(queryString, values);
 	}
 
 	/**
-	 * Ê¹ÓÃ´ø²ÎÊýµÄHSQLÓï¾ä½øÐÐ·ÖÒ³¼ìË÷Êý¾Ý
+	 * Ê¹ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½HSQLï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param queryString
 	 * @param values
@@ -215,26 +219,6 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 	@Override
 	public List find(final String queryString, final Object[] values,
 			final int start, final int pageSize) {
-		
-//		List list = getHibernateTemplate().executeWithNativeSession(
-//				new HibernateCallback<List>() {
-//					public List doInHibernate(Session session)
-//							throws HibernateException {
-//						Query queryObject = session.createQuery(queryString);
-//						if (values != null) {
-//							for (int i = 0; i < values.length; i++) {
-//								queryObject.setParameter(i, values[i]);
-//							}
-//						}
-//						//ÉèÖÃ·ÖÒ³²ÎÊý
-//						if (start >= 0 && pageSize > 0) {
-//							queryObject.setFirstResult(start);
-//							queryObject.setMaxResults(pageSize);
-//						}
-//						return queryObject.list();
-//					}
-//				});
-		//================
 		final StringBuilder sql=new StringBuilder();
 		sql.append(queryString);
 		List list=null;
@@ -250,11 +234,47 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 									query.setParameter(i, values[i]);
 								}
 							}
-							//ÉèÖÃ·ÖÒ³²ÎÊý
+							/*//ï¿½ï¿½ï¿½Ã·ï¿½Ò³ï¿½ï¿½ï¿½ï¿½
 							if (start >= 0 && pageSize > 0) {
 								query.setFirstResult(start);
 								query.setMaxResults(pageSize);
+							}*/
+						} catch (Throwable ex) {
+							ex.printStackTrace();
+						}
+						query.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
+						return query.list();
+					}
+				});
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//=====
+		
+		
+		return list;
+	}
+	
+	public List queryPageSql(final String sql,final Object[]params){
+		List list=null;
+		try {
+			list=getHibernateTemplate().executeFind(
+				new HibernateCallback<List>() {
+					public List doInHibernate(Session session) throws HibernateException{
+						Query query=null;
+						try {
+							query=session.createSQLQuery(sql);
+							if (params != null) {
+								for (int i = 0; i < params.length; i++) {
+									query.setParameter(i, params[i]);
+								}
 							}
+							/*//ï¿½ï¿½ï¿½Ã·ï¿½Ò³ï¿½ï¿½ï¿½ï¿½
+							if (start >= 0 && pageSize > 0) {
+								query.setFirstResult(start);
+								query.setMaxResults(pageSize);
+							}*/
 						} catch (Throwable ex) {
 							ex.printStackTrace();
 						}
@@ -272,8 +292,48 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 		return list;
 	}
 
-	// Ç¿ÖÆÁ¢¼´¸üÐÂ»º³åÊý¾Ýµ½Êý¾Ý¿â£¨·ñÔò½öÔÚÊÂÎñÌá½»Ê±²Å¸üÐÂ£©
+	// Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½Ý¿â£¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á½»Ê±ï¿½Å¸ï¿½ï¿½Â£ï¿½
 	public void flush() {
 		getHibernateTemplate().flush();
+	}
+
+
+
+	@Override
+	public Object get(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public void update(BaseEntity... pojos) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void save(BaseEntity... pojos) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void delete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public List querySql(String sql, Object[] params) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import app.entity.CourseTypeCode;
 import system.dao.BaseDaoImpl;
+import system.utils.SqlUtil;
 
 public class CourseTypeDaoImpl extends BaseDaoImpl<CourseTypeCode, Serializable> implements CourseTypeDao {
 

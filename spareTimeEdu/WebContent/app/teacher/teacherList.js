@@ -1,31 +1,56 @@
-angular.module('teacherList',[]).controller('teacherListCtrl',['$scope','$http',function($scope,$http){
+angular.module('teacherList',['ui.bootstrap']).controller('teacherListCtrl',['$scope','$http',
+                function($scope,$http){
+	var config={
+			 headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+	};
 	$scope.condition={
-			keyword:'',
+			TITLE:'',
+			TYPE:'',
+			PRICE:'',
+			KEYWORD:'',
 	};
 	
-	$scope.course={
-			courseList:[],
-	};
+	$scope.category={
+			type:[],
+			price:[],
+			keyword:[]
+	}
+	$scope.courseList=[];
+	
+	$scope.pagination={
+			totalItems:64,
+			currentPage:1,
+			maxSize:5,
+	}
+	
+	
+	$http.post('/spareTimeEdu/course/getCourse',$.param({cond:JSON.stringify($scope.condition)})).success(response){
+		if(response.data){
+			
+		}
+	}
 	
 	//$scope.search=search;
 	
-	var req = {
-			 method: 'POST',
-			 url: '/spareTimeEdu/course/getCourse',
-			 headers: {
-//				 'Accept':'*/*',
-				 'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
-//				 'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
-				 'X-Requested-With':'XMLHttpRequest',
-			 },
-			 data:$.param({cond:JSON.stringify($scope.condition)}),
-			};
-	
-	$http(req).then(function(reponse){
-		console.log(reponse.data.obj);
-		$scope.course=reponse.data.obj;
-	});
-	
+//	var req = {
+//			 method: 'POST',
+//			 url: '/spareTimeEdu/course/getCourse',
+//			 headers: {
+////				 'Accept':'*/*',
+//				 'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
+////				 'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+//				 'X-Requested-With':'XMLHttpRequest',
+//			 },
+//			 data:$.param({cond:JSON.stringify($scope.condition)}),
+//			};
+//	
+//	$http(req).then(function(reponse){
+//		console.log(reponse.data.obj);
+//		$scope.course=reponse.data.obj;
+//	});
+	$http.post('/spareTimeEdu/course/getCourse',$.param({cond:JSON.stringify($scope.condition)})).success(response){
+		
+	}
 	
 }]);
 

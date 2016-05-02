@@ -4,15 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * ËùÒàÊµÌåµÄ¸¸Àà
+ * ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ä¸ï¿½ï¿½ï¿½
  * @author GYX
  *
  */
-@Entity
+@MappedSuperclass
 public class BaseEntity {
 	@Id
 	@GeneratedValue(generator = "uuid")

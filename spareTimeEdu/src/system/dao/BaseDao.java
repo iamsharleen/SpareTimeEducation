@@ -6,15 +6,24 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 
+import system.entity.BaseEntity;
+
 /**
- * ËùÓÐDaoµÄ¸¸Àà
+ * ï¿½ï¿½ï¿½ï¿½Daoï¿½Ä¸ï¿½ï¿½ï¿½
  * @author GYX
  *
  */
 public interface BaseDao<T, PK extends Serializable> {
 	
+	
+	public Object get(String id);
+	public void update(BaseEntity... pojos);
+	public void save(BaseEntity... pojos);
+	public void delete(String id);
+	public List querySql(String sql,Object[]params);
+	public List queryPageSql(String sql,Object[]params);
 	/**
-	 * ¸ù¾ÝÖ÷¼ü»ñÈ¡ÊµÌå¡£Èç¹ûÃ»ÓÐÏàÓ¦µÄÊµÌå£¬·µ»Ø null¡£
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Êµï¿½å¡£ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Êµï¿½å£¬ï¿½ï¿½ï¿½ï¿½ nullï¿½ï¿½
 	 * 
 	 * @param id
 	 * @return T
@@ -22,7 +31,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	public T get(PK id);
 
 	/**
-	 * ¸ù¾ÝÖ÷¼ü»ñÈ¡ÊµÌå²¢¼ÓËø¡£Èç¹ûÃ»ÓÐÏàÓ¦µÄÊµÌå£¬·µ»Ø null¡£
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Êµï¿½å²¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Êµï¿½å£¬ï¿½ï¿½ï¿½ï¿½ nullï¿½ï¿½
 	 * 
 	 * @param id
 	 * @param lock
@@ -31,7 +40,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	public T getWithLock(PK id, LockMode lock);
 
 	/**
-	 * ¸ù¾ÝÖ÷¼ü»ñÈ¡ÊµÌå¡£Èç¹ûÃ»ÓÐÏàÓ¦µÄÊµÌå£¬Å×³öÒì³£¡£
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Êµï¿½å¡£ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Êµï¿½å£¬ï¿½×³ï¿½ï¿½ì³£ï¿½ï¿½
 	 * 
 	 * @param id
 	 * @return T
@@ -39,7 +48,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	public T load(PK id);
 
 	/**
-	 * ¸ù¾ÝÖ÷¼ü»ñÈ¡ÊµÌå²¢¼ÓËø¡£Èç¹ûÃ»ÓÐÏàÓ¦µÄÊµÌå£¬Å×³öÒì³£¡£
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Êµï¿½å²¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Êµï¿½å£¬ï¿½×³ï¿½ï¿½ì³£ï¿½ï¿½
 	 * 
 	 * @param id
 	 * @param lock
@@ -48,7 +57,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	public T loadWithLock(PK id, LockMode lock);
 
 	/**
-	 * »ñÈ¡È«²¿ÊµÌå¡£
+	 * ï¿½ï¿½È¡È«ï¿½ï¿½Êµï¿½å¡£
 	 * 
 	 * @return List<T>
 	 */
@@ -57,14 +66,14 @@ public interface BaseDao<T, PK extends Serializable> {
 	// loadAllWithLock() ?
 
 	/**
-	 * ¸üÐÂÊµÌå
+	 * ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	 * 
 	 * @param entity
 	 */
 	public void update(T entity);
 
 	/**
-	 * ¸üÐÂÊµÌå²¢¼ÓËø
+	 * ï¿½ï¿½ï¿½ï¿½Êµï¿½å²¢ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param entity
 	 * @param lock
@@ -72,7 +81,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	public void updateWithLock(T entity, LockMode lock);
 
 	/**
-	 * ´æ´¢ÊµÌåµ½Êý¾Ý¿â
+	 * ï¿½æ´¢Êµï¿½åµ½ï¿½ï¿½Ý¿ï¿½
 	 * 
 	 * @param entity
 	 */
@@ -81,28 +90,28 @@ public interface BaseDao<T, PK extends Serializable> {
 	// saveWithLock()
 
 	/**
-	 * Ôö¼Ó»ò¸üÐÂÊµÌå
+	 * ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	 * 
 	 * @param entity
 	 */
 	public void saveOrUpdate(T entity);
 
 	/**
-	 * Ôö¼Ó»ò¸üÐÂ¼¯ºÏÖÐµÄÈ«²¿ÊµÌå
+	 * ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ðµï¿½È«ï¿½ï¿½Êµï¿½ï¿½
 	 * 
 	 * @param entities
 	 */
 	public void saveOrUpdateAll(Collection<T> entities);
 
 	/**
-	 * É¾³ýÖ¸¶¨µÄÊµÌå
+	 * É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	 * 
 	 * @param entity
 	 */
 	public void delete(T entity);
 
 	/**
-	 * ¼ÓËø²¢É¾³ýÖ¸¶¨µÄÊµÌå
+	 * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	 * 
 	 * @param entity
 	 * @param lock
@@ -110,14 +119,14 @@ public interface BaseDao<T, PK extends Serializable> {
 	public void deleteWithLock(T entity, LockMode lock);
 
 	/**
-	 * ¸ù¾ÝÖ÷¼üÉ¾³ýÖ¸¶¨ÊµÌå
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö¸ï¿½ï¿½Êµï¿½ï¿½
 	 * 
 	 * @param id
 	 */
 	public void deleteByKey(PK id);
 
 	/**
-	 * ¸ù¾ÝÖ÷¼ü¼ÓËø²¢É¾³ýÖ¸¶¨µÄÊµÌå
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	 * 
 	 * @param id
 	 * @param lock
@@ -125,7 +134,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	public void deleteByKeyWithLock(PK id, LockMode lock);
 
 	/**
-	 * É¾³ý¼¯ºÏÖÐµÄÈ«²¿ÊµÌå
+	 * É¾ï¿½ï¿½ï¿½ï¿½Ðµï¿½È«ï¿½ï¿½Êµï¿½ï¿½
 	 * 
 	 * @param entities
 	 */
@@ -134,7 +143,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	// -------------------- HSQL ----------------------------------------------
 
 	/**
-	 * Ê¹ÓÃHSQLÓï¾äÖ±½ÓÔö¼Ó¡¢¸üÐÂ¡¢É¾³ýÊµÌå
+	 * Ê¹ï¿½ï¿½HSQLï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Â¡ï¿½É¾ï¿½ï¿½Êµï¿½ï¿½
 	 * 
 	 * @param queryString
 	 * @return int
@@ -142,7 +151,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	public int bulkUpdate(String queryString);
 
 	/**
-	 * Ê¹ÓÃ´ø²ÎÊýµÄHSQLÓï¾äÔö¼Ó¡¢¸üÐÂ¡¢É¾³ýÊµÌå
+	 * Ê¹ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½HSQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Â¡ï¿½É¾ï¿½ï¿½Êµï¿½ï¿½
 	 * 
 	 * @param queryString
 	 * @param values
@@ -151,7 +160,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	public int bulkUpdate(String queryString, Object[] values);
 
 	/**
-	 * Ê¹ÓÃHSQLÓï¾ä¼ìË÷Êý¾Ý
+	 * Ê¹ï¿½ï¿½HSQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param queryString
 	 * @return List
@@ -159,7 +168,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	public List find(String queryString);
 
 	/**
-	 * Ê¹ÓÃHSQLÓï¾ä·ÖÒ³¼ìË÷Êý¾Ý
+	 * Ê¹ï¿½ï¿½HSQLï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param queryString
 	 * @return List
@@ -167,15 +176,15 @@ public interface BaseDao<T, PK extends Serializable> {
 	public List find(String queryString, int start, int pageSize);
 
 	/**
-	 * »ñµÃ·ûºÏÌõ¼þµÄÐÐÊý
+	 * ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public long getRowCount(String queryString);
 	/**
-	 * »ñµÃ·ûºÏÌõ¼þµÄÐÐÊý
+	 * ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public long getRowCount(String queryString,Object[] values);
 	/**
-	 * Ê¹ÓÃ´ø²ÎÊýµÄHSQLÓï¾ä¼ìË÷Êý¾Ý
+	 * Ê¹ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½HSQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param queryString
 	 * @param values
@@ -184,7 +193,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	public List find(String queryString, Object[] values);
 
 	/**
-	 * Ê¹ÓÃ´ø²ÎÊýµÄHSQLÓï¾ä½øÐÐ·ÖÒ³¼ìË÷Êý¾Ý
+	 * Ê¹ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½HSQLï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param queryString
 	 * @param values
@@ -194,7 +203,7 @@ public interface BaseDao<T, PK extends Serializable> {
 			int pageSize);
 
 	/**
-	 * Ç¿ÖÆÁ¢¼´¸üÐÂ»º³åÊý¾Ýµ½Êý¾Ý¿â£¨·ñÔò½öÔÚÊÂÎñÌá½»Ê±²Å¸üÐÂ£©
+	 * Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½Ý¿â£¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á½»Ê±ï¿½Å¸ï¿½ï¿½Â£ï¿½
 	 * 
 	 */
 	public void flush();

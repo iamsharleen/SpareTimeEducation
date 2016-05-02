@@ -16,8 +16,10 @@
 								<li><a class="inner" data-action="select-coruseType" href="javascript:;">讲座培训</a></li>
 								<li><a class="inner" data-action="select-coruseType" href="javascript:;">免费公开课</a></li>-->
 
-								<li><a class="inner" data-action="select-coruseType" href="javascript:;">主题咨询</a></li>
-								<li><a class="inner" data-action="select-coruseType" href="javascript:;">私教兴趣课</a></li>
+								<li ng-repeat="type in category.typeList track by $index">
+									<a class="inner" ng-click="chooseType($index)" ng-bind="type.NAME"></a>
+								</li>
+								<li><a class="inner" data-action="select-coruseType">私教兴趣课</a></li>
 
 							</ul>
 						</div>
@@ -25,13 +27,11 @@
 						
 						
 						<div class="category-container">
-							<h2 class="category-title">
-							<span class="icon  icon-yen"></span>费用
-						</h2>
+							<h2 class="category-title"><span class="icon  icon-yen"></span>费用</h2>
 							<ul class="category-hot-list">
-								
-
-								<li><a class="inner" data-action="select-hot" href="javascript:;">0-100</a></li>
+								<li ng-repeat="price in category.typeList track by $index">
+								<a class="inner" ng-click="choosePrice($index)" ng-bind="price"></a>
+								</li>
 
 								<li><a class="inner" data-action="select-hot" href="javascript:;">100-300</a></li>
 
@@ -42,13 +42,11 @@
 						</div>
 						
 						<div class="category-container">
-							<h2 class="category-title">
-							<span class="icon  icon-key"></span>关键字
-						</h2>
+							<h2 class="category-title"><span class="icon  icon-key"></span>关键字</h2>
 							<ul class="category-hot-list">
-
-
-								<li><a class="inner" data-action="select-hot" href="javascript:;">正面管教</a></li>
+								<li ng-repeat="word in category.keywordList track by $index">
+									<a class="inner" ng-click="chooseKeyword($index)" ng-bind="word"></a>
+								</li>
 
 								<li><a class="inner" data-action="select-hot" href="javascript:;">PET</a></li>
 
@@ -110,7 +108,7 @@
 					</li>
 
 				</ul>
-				<ul class="pager">
+				<!-- <ul class="pager">
 
 					<li class="current"><a href="http://www.zaih.com/topics/?city=beijing">1</a></li>
 
@@ -125,7 +123,11 @@
 					<li><a href="http://www.zaih.com/topics/?city=beijing&amp;page=2"><span
 						class="icon icon-chevron-right"></span></a></li>
 
-				</ul>
+				</ul> -->
+				
+				<uib-pagination total-items="pagination.totalItems" ng-model="pagination.currentPage" max-size="pagination.maxSize" 
+				class="pagination-sm" boundary-links="true" rotate="false" num-pages="pagination.numPages"
+		    	previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
 			</div>
 			<!--main content start-->
 

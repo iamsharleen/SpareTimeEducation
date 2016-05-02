@@ -1,5 +1,6 @@
 package app.action;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import app.service.CourseService;
 import system.action.BaseAction;
+import system.action.BaseAction2;
 import system.entity.ResultObject;
 import system.utils.JsonUtil;
 
@@ -19,6 +21,7 @@ import system.utils.JsonUtil;
 @Component
 @Scope(value="prototype")
 @Namespace("/course")
+@SuppressWarnings("rawtypes")
 public class CourseAction extends BaseAction{
 	@Autowired
 	private CourseService courseService;
@@ -29,18 +32,19 @@ public class CourseAction extends BaseAction{
 	public String toCourseList(){
 		return "SUCCESS";
 	}
-	
-	public void queryAllCourse(){
-		
+	@Action(value="/getCourseList")
+	public void queryCourseList(){
+		Map map=getRequestMap();
+		List<Map> list=courseService.queryCourseList(map);
+		System.out.println(list);
 	}
-	
-	@SuppressWarnings("rawtypes")
 	@Action(value="/getCourse")
 	public void queryCourseByCondition(){
 		Map map=getRequestMap();
 		String reqStr=(String) map.get("cond");
 		Map reqMap=JsonUtil.jsonToMap(reqStr);
 		Map resultMap=courseService.queryCourseByCondition(reqMap);
-		translateAndOutput(resultMap);
+		//translateAndOutput(resultMap);
 	}
+
 }
