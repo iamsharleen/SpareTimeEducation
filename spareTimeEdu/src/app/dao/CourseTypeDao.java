@@ -9,6 +9,6 @@ import system.dao.BaseDao;
 
 public interface CourseTypeDao extends BaseDao<CourseTypeCode, Serializable> {
 	
-	public List<Map> queryAllType(String bizKey);
+	public List<Map> queryCourseTypes(String bizKey);
 
 }

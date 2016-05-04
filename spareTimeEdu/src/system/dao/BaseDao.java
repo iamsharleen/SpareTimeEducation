@@ -18,7 +18,7 @@ import system.entity.PageInfo;
 public interface BaseDao<T, PK extends Serializable> {
 	
 	
-	public Object get(String id);
+	//public Object get(String id);
 	public void update(BaseEntity... pojos);
 	public void save(BaseEntity... pojos);
 	public void delete(String... id);

@@ -7,4 +7,5 @@ import java.util.Map;
 public interface CommonService {
 
 	public Map getCategories(String bizKey);
+
 }

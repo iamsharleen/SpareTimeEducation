@@ -317,26 +317,26 @@ public class BaseDaoImpl<T, PK extends Serializable> extends HibernateDaoSupport
 
 
 
-	@Override
-	public Object get(String id) {
-		String tableName=getTableName(entityClass);
-		String querySql="select * from "+tableName+" where ID= ?";
-		List params=new ArrayList();
-		params.add(id);
-		List<Map> list=querySql(querySql, params);
-		Object obj=new Object();
-		if(list!=null && list.size()>0){
-			Map map=list.get(0);
-			try {
-				BeanUtils.copyProperties(obj, map);
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			}
-		}
-		return obj;
-	}
+//	@Override
+//	public Object get(String id) {
+//		String tableName=getTableName(entityClass);
+//		String querySql="select * from "+tableName+" where ID= ?";
+//		List params=new ArrayList();
+//		params.add(id);
+//		List<Map> list=querySql(querySql, params);
+//		Object obj=new Object();
+//		if(list!=null && list.size()>0){
+//			Map map=list.get(0);
+//			try {
+//				BeanUtils.copyProperties(obj, map);
+//			} catch (IllegalAccessException e) {
+//				e.printStackTrace();
+//			} catch (InvocationTargetException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		return obj;
+//	}
 
 
 

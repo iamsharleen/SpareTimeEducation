@@ -1,6 +1,7 @@
 package app.dao;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +12,12 @@ import system.utils.SqlUtil;
 public class CourseTypeDaoImpl extends BaseDaoImpl<CourseTypeCode, Serializable> implements CourseTypeDao {
 
 	@Override
-	public List<Map> queryAllType(String bizKey) {
-		return null;
+	public List<Map> queryCourseTypes(String bizKey) {
+		StringBuilder sql=new StringBuilder();
+		List params=new ArrayList();
+		sql.append("select * from COURSE_TYPE_CODE");
+		List<Map>list=querySql(sql.toString(), params);
+		return list;
 	}
 
 }

@@ -43,7 +43,7 @@ public class CourseAction extends BaseAction{
 		String reqStr=(String) map.get("cond");
 		Map reqMap=JsonUtil.jsonToMap(reqStr);
 		Map resultMap=courseService.queryCourseByCondition(reqMap);
-		//translateAndOutput(resultMap);
+		translateAndOutput(resultMap);
 	}
 
 }
