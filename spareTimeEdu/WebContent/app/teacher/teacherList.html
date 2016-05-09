@@ -1,114 +1,118 @@
 <meta charset="utf-8">
-			<!--topic-tags start-->
-			<div class="topic-tags-wrap" ng-controller="teacherListCtrl">
-				<div class="topic-tags">
-					<div class="clearfix"></div>
-					<!--catagory start-->
-					<div class="category">
-						<div class="category-container">
-							<h2 class="category-title">
-								<span class="icon icon-search"> </span>我要找</h2>
-							<ul class="category-coruseType-list">
-								<!--<li class="picked unlimited"><a class="inner" data-action="select-coruseType" href="javascript:areaOnload(0);">不限</a></li>-->
+<!--topic-tags start-->
+<div ng-controller="teacherListCtrl">
+	<div class="topic-tags-wrap">
+		<div class="topic-tags">
+			<div class="clearfix"></div>
+			<!--catagory start-->
+			<div class="category">
+				<div class="category-container">
+					<h2 class="category-title">
+						<span class="icon icon-search"> </span>我要找
+					</h2>
+					<ul class="category-coruseType-list">
+						<!--<li class="picked unlimited"><a class="inner" data-action="select-coruseType" href="javascript:areaOnload(0);">不限</a></li>-->
 
-								<!--<li><a class="inner" data-action="select-coruseType" href="javascript:;">微课</a></li>
+						<!--<li><a class="inner" data-action="select-coruseType" href="javascript:;">微课</a></li>
 
 								<li><a class="inner" data-action="select-coruseType" href="javascript:;">讲座培训</a></li>
 								<li><a class="inner" data-action="select-coruseType" href="javascript:;">免费公开课</a></li>-->
 
-								<li ng-repeat="type in category.typeList track by $index">
-									<a class="inner" ng-click="chooseType($index)" ng-bind="type.NAME"></a>
-								</li>
-								<li><a class="inner" data-action="select-coruseType">私教兴趣课</a></li>
+						<li ng-repeat="type in category.courseTypes track by $index"><a
+							class="inner" ng-click="chooseType($index)" ng-bind="type.NAME"></a>
+						</li>
 
-							</ul>
-						</div>
+					</ul>
+				</div>
 
-						
-						
-						<div class="category-container">
-							<h2 class="category-title"><span class="icon  icon-yen"></span>费用</h2>
-							<ul class="category-hot-list">
-								<li ng-repeat="price in category.typeList track by $index">
-								<a class="inner" ng-click="choosePrice($index)" ng-bind="price"></a>
-								</li>
+				<div class="category-container">
+					<h2 class="category-title">
+						<span class="icon  icon-yen"></span>费用
+					</h2>
+					<ul class="category-hot-list">
+						<li ng-repeat="price in category.typeList track by $index"><a
+							class="inner" ng-click="choosePrice($index)" ng-bind="price"></a>
+						</li>
 
-								<li><a class="inner" data-action="select-hot" href="javascript:;">100-300</a></li>
+						<li><a class="inner" data-action="select-hot"
+							href="javascript:;">100-300</a></li>
 
-								<li><a class="inner" data-action="select-hot" href="javascript:;">300-500</a></li>
+						<li><a class="inner" data-action="select-hot"
+							href="javascript:;">300-500</a></li>
 
-								<li><a class="inner" data-action="select-hot" href="javascript:;">500+</a></li>
-							</ul>
-						</div>
-						
-						<div class="category-container">
-							<h2 class="category-title"><span class="icon  icon-key"></span>关键字</h2>
-							<ul class="category-hot-list">
-								<li ng-repeat="word in category.keywordList track by $index">
-									<a class="inner" ng-click="chooseKeyword($index)" ng-bind="word"></a>
-								</li>
+						<li><a class="inner" data-action="select-hot"
+							href="javascript:;">500+</a></li>
+					</ul>
+				</div>
 
-								<li><a class="inner" data-action="select-hot" href="javascript:;">PET</a></li>
-
-								<li><a class="inner" data-action="select-hot" href="javascript:;">幼儿园入园</a></li>
-
-								<li><a class="inner" data-action="select-hot" href="javascript:;">幼小衔接</a></li>
+				<div class="category-container">
+					<h2 class="category-title">
+						<span class="icon  icon-key"></span>关键字
+					</h2>
+					<ul class="category-hot-list">
+						<li ng-repeat="word in category.keywords track by $index">
+							<a class="inner" ng-click="chooseKeyword($index)" ng-bind="word.KEYWORD"></a>
+						</li>
 
 
-							</ul>
-						</div>
-					</div>
-					<!--catagory end-->
+
+					</ul>
 				</div>
 			</div>
-			<!--topic-tags start-->
+			<!--catagory end-->
+		</div>
+	</div>
+	<!--topic-tags start-->
 
-			<!--main content start-->
-			<div class="content">
-				<div class="total">
-					<ul class="sort-list">
-						<li class="picked "><a data-value="0" href="javascript:void 0;">综合排序</a></li>
-						<li class=""><a data-value="1" href="javascript:void 0;">人气<span></span></a></li>
-						<li class=""><a data-value="2" href="javascript:void 0;">评价<span></span></a></li>
+	<!--main content start-->
+	<div class="content">
+		<div class="total">
+			<ul class="sort-list">
+				<li class="picked "><a data-value="0" href="javascript:void 0;">综合排序</a></li>
+				<li class=""><a data-value="1" href="javascript:void 0;">人气<span></span></a></li>
+				<li class=""><a data-value="2" href="javascript:void 0;">评价<span></span></a></li>
 
-						<li class=""><a data-value="3" href="javascript:void 0;">价格<span></span></a></li>
-					</ul>
-					<select class="select-place">
-					<option>广州</option>
-					<option>深圳</option>
-					<option>其它</option>
-				</select>
-				</div>
-				
-				<ul class="topic-list topics perches">
-					<li class="a-topic" ng-repeat="course in course.courseInfoList">
-						<a class="topic-tutor-link" href="/mentor/84796189/topic/29867336/">
-							<span style="background-image : url(//7rylge.com2.z0.glb.qiniucdn.com/FooIuafgkumoQsi1Ud24m0WMdXm073!avatar)" class="topic-tutor-pic"></span>
-							<div class="topic-info">
-								<h3 class="topic-title" >
-	                    <span class="topic-title-txt" ng-bind="course.Subject"></span>
-	                       </h3>
-	                         <div class="topic-title-info" >									
+				<li class=""><a data-value="3" href="javascript:void 0;">价格<span></span></a></li>
+			</ul>
+			<select class="select-place">
+				<option>广州</option>
+				<option>深圳</option>
+				<option>其它</option>
+			</select>
+		</div>
+		<ul class="topic-list topics perches">
+			<li class="a-topic" ng-repeat="course in courseList"><a
+				class="topic-tutor-link"> <span
+					style="background-image: url(//7rylge.com2.z0.glb.qiniucdn.com/FooIuafgkumoQsi1Ud24m0WMdXm073!avatar)"
+					class="topic-tutor-pic"></span>
+					<div class="topic-info">
+						<h3 class="topic-title">
+							<span class="topic-title-txt" ng-bind="course.SUBJECT"></span>
+						</h3>
+						<div class="topic-title-info">
 							<div class="">
-				            	<i class="money-i">￥<span ng-bind="course.Price"></span></i>&nbsp;元/次
-				            </div>
-				            <div class="" >约<span class="" style="margin: 0 4px;" ng-bind="course.Duration"></span>小时</div>
-				       		<div style=""><span class="special-span">66</span>&nbsp;人报名</div>
-	                    </div>
-	           
-								<div class="topic-tutor-info">
-									<span class="topic-tutor-name" ng-bind="course.TeacherName"></span>
-									
-									<span class="topic-tutor-intro" ng-bind="course.TeacherTitle">
-						</span>
-								</div>
-								<p ng-bind="course.CourseBreif"></p>
+								<i class="money-i"><span ng-bind="course.PRICE|currency:'￥'"></span></i>&nbsp;元/次
 							</div>
-						</a>
-					</li>
+							<div class="">
+								约<span class="" style="margin: 0 4px;" ng-bind="course.DURATION"></span>小时
+							</div>
+							<div style="">
+								<span class="special-span">66</span>&nbsp;人报名
+							</div>
+						</div>
 
-				</ul>
-				<!-- <ul class="pager">
+						<div class="topic-tutor-info">
+							<span class="topic-tutor-name" ng-bind="course.TeacherName"></span>
+
+							<span class="topic-tutor-intro" ng-bind="course.TeacherTitle">
+							</span>
+						</div>
+						<p ng-bind="course.BRIEF"></p>
+					</div>
+			</a></li>
+
+		</ul>
+		<!-- <ul class="pager">
 
 					<li class="current"><a href="http://www.zaih.com/topics/?city=beijing">1</a></li>
 
@@ -124,11 +128,13 @@
 						class="icon icon-chevron-right"></span></a></li>
 
 				</ul> -->
-				
-				<uib-pagination total-items="pagination.totalItems" ng-model="pagination.currentPage" max-size="pagination.maxSize" 
-				class="pagination-sm" boundary-links="true" rotate="false" num-pages="pagination.numPages"
-		    	previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
-			</div>
-			<!--main content start-->
 
-			
+		<uib-pagination total-items="pagination.totalItems"
+			ng-model="pagination.currentPage" max-size="pagination.maxSize"
+			class="pagination-sm" boundary-links="true" rotate="false"
+			num-pages="pagination.numPages" previous-text="&lsaquo;"
+			next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+	</div>
+	<!--main content start-->
+
+</div>

@@ -21,7 +21,7 @@ public class CommonAction extends BaseAction{
 	@Autowired
 	private CommonService commonService;
 	
-	@Action(value="/getCategorie")
+	@Action(value="/getCategories")
 	public void getCategories(){
 		Map map=getRequestMap();
 		String key=(String) map.get("bizKey");

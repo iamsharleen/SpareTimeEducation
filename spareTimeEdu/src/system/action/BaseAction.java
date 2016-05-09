@@ -14,11 +14,11 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.util.ServletContextAware;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.opensymphony.xwork2.ActionSupport;
 
-import system.common.RequestContext;
 import system.entity.ResultObject;
-import system.utils.JsonUtil;
 /**
  * ����Action�ĸ���ӿ�
  * @author Administrator
@@ -60,7 +60,8 @@ public class BaseAction extends ActionSupport implements ServletContextAware, Se
 	
 	public void translateAndOutput(Map resultMap){
 		Gson gson=new Gson();
-		String resultStr=gson.toJson(resultMap);
+//		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create(); 
+		String resultStr=gson.toJson(resultMap, new TypeToken<Map<String, Object>>(){}.getType());
 		resp.setContentType("text/html;charset=utf-8");
 		try {
 			resp.getWriter().print(resultStr);

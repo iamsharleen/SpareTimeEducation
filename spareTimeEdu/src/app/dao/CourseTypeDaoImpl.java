@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import app.entity.CourseTypeCode;
 import system.dao.BaseDaoImpl;
 import system.utils.SqlUtil;
-
+@Repository
 public class CourseTypeDaoImpl extends BaseDaoImpl<CourseTypeCode, Serializable> implements CourseTypeDao {
 
 	@Override

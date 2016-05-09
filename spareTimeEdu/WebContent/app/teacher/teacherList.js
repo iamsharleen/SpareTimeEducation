@@ -1,9 +1,6 @@
-
-
 angular.module("app").controller('teacherListCtrl',['$scope','$http',
                 function($scope,$http){
 	
-	alert("aaa");
 	var config={
 			 headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
 	};
@@ -20,19 +17,21 @@ angular.module("app").controller('teacherListCtrl',['$scope','$http',
 			keyword:[]
 	}
 	$scope.courseList=[];
-	
 	$scope.pagination={
 			totalItems:64,
 			currentPage:1,
 			maxSize:5,
 	}
 	
-	$http.post('/spareTimeEdu/common/getCategories',$.param({bizKey:'TEACHER'})).success(function(response){
-		console.log(response.data);
+	$http.post('/spareTimeEdu/common/getCategories',$.param({bizKey:'TEACHER'}),config).success(function(data){
+		console.log(data);
+		$scope.category=data;
 	});
-	$http.post('/spareTimeEdu/course/getCourse',$.param({cond:JSON.stringify($scope.condition)})).success(function(response){
-		if(response.data){
-			console.log(response.data);
+	$http.post('/spareTimeEdu/course/getCourse',$.param({cond:JSON.stringify($scope.condition)}),config)
+		.success(function(data){
+		if(data){
+			console.log(data);
+			$scope.courseList=data.courseInfoList;
 		}
 	});
 }]);
