@@ -1,0 +1,49 @@
+<div class="modal-header">
+	<h5 class="modal-title"></h5>
+</div>
+<div class="modal-body">
+	<div class="row" ng-if="isLogin">
+        <div class="col-md-12">
+          <form role="form">
+            <div class="form-group">
+              <label for="exampleInputEmail1">用户名</label>
+              <input class="form-control input-lg" type="text" placeholder="用户名">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">密码</label>
+              <input class="form-control input-lg" type="password" placeholder="密码">
+            </div>
+            <div class="form-group">
+              	<a ng-click="isLogin=!isLogin">去注册</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <div class="row" ng-if="!isLogin">
+        <div class="col-md-12">
+          <form role="form">
+            <div class="form-group">
+              <label for="exampleInputEmail1">用户名</label>
+              <input class="form-control input-lg" type="text" placeholder="联系方式">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">密码</label>
+              <input class="form-control input-lg" type="password" placeholder="密码">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">确认密码</label>
+              <input class="form-control input-lg" type="password" placeholder="密码">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">邮箱</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="邮箱">
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="ok()">确定</button>
+	<button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+</div>

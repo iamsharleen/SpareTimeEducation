@@ -1,0 +1,44 @@
+/* 平板电脑布局: 481px 至 768px。样式继承自: 移动设备布局。 */
+
+@media only screen and (min-width: 481px) {
+	.class {
+		background: #333;
+	}
+}
+/* 桌面电脑布局: 769px 至最高 1232px。样式继承自: 移动设备布局和平板电脑布局。 */
+
+@media only screen and (min-width: 769px) {
+	.class {
+		background: #666;
+	}
+}
+html {
+	font-size: 100%;
+}
+@media (min-width: 640px) {
+	body {
+		font-size: 1rem;
+	}
+}
+@media (min-width: 960px) {
+	body {
+		font-size: 1.2rem;
+	}
+}
+@media (min-width: 1100px) {
+	body {
+		font-size: 1.5rem;
+	}
+}
+img {
+	max-width: 100%;
+	height: auto;
+	width: auto;
+	/* ie8 */
+}
+.video embed,
+.video object,
+.video iframe {
+	width: 100%;
+	height: auto;
+}

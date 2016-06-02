@@ -22,9 +22,9 @@ public class CommonServiceImpl implements CommonService {
 	public Map getCategories(String bizKey) {
 		Map resultMap=new HashMap();
 		List<Map> types=courseTypeDao.queryCourseTypes(bizKey);
-		
 		List<Map> keywords=keywordConfigDao.queryKeywords();
 		resultMap.put("courseTypes", types);
+		resultMap.put("keywords", keywords);
 		resultMap.put("keywords", keywords);
 		return resultMap;
 	}

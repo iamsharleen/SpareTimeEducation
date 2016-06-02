@@ -63,5 +63,15 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/struts2-spring-plugin-2.3.16.3.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/struts2-core-2.3.16.3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/apache-maven-3.3.3/repository/org/apache/poi/poi/3.10.1/poi-3.10.1.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="poi-3.10.1.jar"/>
+			<attribute name="maven.groupId" value="org.apache.poi"/>
+			<attribute name="maven.artifactId" value="poi"/>
+			<attribute name="maven.version" value="3.10.1"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

@@ -1,0 +1,17 @@
+.mod-setting-personal ul li{
+	margin: 1em 0;
+	height: auto;
+	line-height: 1.3em;
+}
+.course-list span {
+    font-size: 100%;
+}
+.setting-main .mod-setting-personal{
+	display: block;
+}
+@media screen and (max-width: 768px) {
+	.setting-nav .nav-item {
+		width: 20%;
+		float: left;
+	}
+}

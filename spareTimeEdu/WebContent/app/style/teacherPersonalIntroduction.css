@@ -1,0 +1,12 @@
+.wrap-full .wrap-cont .setting-main textarea{
+	
+	width: 100%;
+	min-height: 400px;
+	padding: 1em;
+	margin-top: 1em;
+	line-height: 2em;
+}
+.wrap-full .wrap-cont .setting-main h4{
+	font-size: 130%;
+	
+}

@@ -1,0 +1,11 @@
+#setting-avatar .top{
+	text-align: center;
+}
+#setting-avatar .top img{
+	width: 100px;
+	border-radius:50% ;
+}
+#setting-avatar .bottom{
+	margin-top: 20px;
+	text-align: right;
+}

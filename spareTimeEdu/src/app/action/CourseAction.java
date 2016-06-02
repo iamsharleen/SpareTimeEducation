@@ -45,5 +45,17 @@ public class CourseAction extends BaseAction{
 		Map resultMap=courseService.queryCourseByCondition(reqMap);
 		translateAndOutput(resultMap);
 	}
-
+	@Action(value="/commitCourse")
+	public void commitCourse(){
+		Map map=getRequestMap();
+		String courseStr=(String) map.get("cond");
+	}
+	
+	@Action(value="/saveCourse")
+	public void saveCourse(){
+		Map map=getRequestMap();
+		String courseStr=(String) map.get("courseInfo");
+		Map courseMap=JsonUtil.jsonToMap(courseStr);
+		courseService.saveCourse(courseMap);
+	}
 }

@@ -1,0 +1,257 @@
+.mobile-header {
+	display: none;
+	top: 0;
+}
+
+.setting-nav-scaling {
+	cursor: pointer;
+	position: absolute;
+	right: -16px;
+	top: 50%;
+	z-index: 1;
+	display: none;
+}
+
+.setting-nav {
+	float: left;
+}
+
+.setting-main {
+	float: right;
+}
+@media screen and (max-width:767px ) {
+	.wrap-full{
+		margin-top: 0;
+	}
+}
+
+@media screen and (max-width: 980px) {
+	.wrap-cont {
+		width: 100%;
+	}
+	.setting-nav {
+		/*width: 22.4489795%;*/
+		position: relative;
+	}
+	.setting-main {
+		/*width: 71.4285714%;*/
+		padding-left: 3.0612244%;
+		padding-right: 3.0612244%;
+		/*box-sizing：border-box;*/
+	}
+	.mod-setting .wrap-cont {
+		border-left: none;
+		border-right: none;
+	}
+	/*	.course-dl {
+		margin-left: 7.14285714285714%;
+	}*/
+	/*关注中的二维码图片变化*/
+	/*.picture2D-div{
+		
+		right:14.40922190201729%;
+	}*/
+}
+
+.main {
+	margin-top: 60px;
+}
+
+@media screen and (max-width: 768px) {
+	.main {
+		margin-top: 0px;
+	}
+	.header {
+		display: none;
+	}
+	.mobile-header {
+		display: block;
+		width: 100%;
+		position: fixed;
+	}
+	/*	.setting-nav {
+		width: 172.4px;
+		position: fixed;
+		left: -172.4px;
+		top: 40px;
+	}*/
+	.setting-nav .nav-item a {
+		font-size: 10px;
+		line-height: 40px;
+	}
+	.add-course-a {
+		font-size: 14px;
+	}
+	.setting-nav .nav-item {
+		width: 16.6%;
+		float: left;
+	}
+	.setting-nav {
+		width: 100%;
+		z-index: 1;
+		height: 40px;
+	}
+	.setting-main {
+		/*margin-bottom: 49px;*/
+		margin-bottom: 40px;
+		margin-top: 40px;
+		/*width: 93.8775512%;*/
+		width: 100%;
+		padding-left: 3.0612244%;
+		padding-right: 3.0612244%;
+		position: relative;
+		/*box-sizing：border-box;*/
+		/*字体*/
+	}
+	.switch li a {
+		font-size: 0.9em;
+		/*	.focus-info p{
+		font-size: 80%;
+	}*/
+	}
+	.setting-nav-scaling {
+		display: block;
+	}
+	/*//搜索框*/
+	.search {
+		width: 32.55208333333333%;
+	}
+	.mod-footer {
+		display: none;
+	}
+	/*	html{
+		overflow-y: hidden;
+	}*/
+	.setting-nav {
+		padding-top: 0px;
+		position: fixed;
+		bottom: 0px;
+		background: #E8E8E8 none repeat scroll 0% 0%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	/*	修改关注中的布局*/
+	.wish-list .tutor-avatar {
+		float: none;
+	}
+	.wish-list .focus-info {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	/*修改个人界面*/
+	.switch li a {
+		min-width: 60px;
+	}
+	input[type=text] {
+		width: 100px;
+	}
+	.mod-info-dl dt,
+	.mod-info-dl dd,
+	.mod-setting-dl dt,
+	.children-mod-info-dl dt,
+	.children-mod-info-dl dd {
+		width: auto;
+	}
+	.mod-info-dl dd span {
+		/*width: auto;*/
+		/*2016年3月10日 13:04:25*/
+		max-width: none;
+	}
+	.birth-delete-btn {
+		bottom: 5px;
+	}
+	.add-div-chil {
+		width: 250px
+	}
+	.add-div-chil form {
+		margin-left: -125px;
+	}
+	.ctcal {
+		left: 20%;
+	}
+	.phone-setting-dl {
+		margin-left: 20px;
+	}
+	.phone-setting-dl dt {
+		margin-bottom: 0px;
+	}
+	/*认证界面布局变化*/
+	.setting-main .page-tit .tip {
+		display: block;
+	}
+	.mod-setting-personal .mod-form .input-text,
+	.mod-setting-personal .mod-form .input-select {
+		width: auto;
+	}
+	.page-tit {
+		margin-bottom: 10px;
+	}
+	.mod-setting-edit .edit-cert {
+		margin-bottom: 0;
+	}
+	.mod-setting-personal .cert-virtual-form .row {
+		padding-left: 0;
+	}
+	.mod-setting-personal .cert-virtual-form span.row-label {
+		margin-left: auto;
+		width: auto;
+	}
+	.mod-setting-personal .cert-virtual-form .cert-img,
+	.mod-setting-personal .mod-form .input-realname,
+	.mod-setting-personal .mod-form .input-card {
+		width: auto;
+	}
+	.mod-setting-cert .btns-row {
+		padding-left: 0;
+		text-align: center;
+	}
+	.mod-setting-cert .btns-row a {
+		width: 45%;
+		border-radius: 50px;
+	}
+	.mod-setting-personal .mod-form .input-qualification-name,
+	.mod-setting-personal .mod-form .input-qualification-desc {
+		width: 90%;
+	}
+	.mod-setting-personal .links {
+		margin-left: 0;
+		text-align: center;
+	}
+	.mod-setting-personal .mod-info-dl dd {
+		width: 80%;
+	}
+}
+
+.setting-nav-open {
+	/*-webkit-transform: translate3d(180px, 0px, 0px);
+	-moz-transform: translate3d(180px, 0px, 0px);
+	-o-transform: translate3d(180px, 0px, 0px);
+	-ms-transform: translate3d(180px, 0px, 0px);
+	-chrome-transform:translate3d(180px, 0px, 0px);*/
+	transform: translate3d(180px, 0px, 0px);
+	/*transition: transform 0.5s ease 0s;*/
+}
+
+
+/*覆盖内容的D I V*/
+
+.mobile-menu-cover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1000;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.setting-main,
+.setting-nav {
+	transition: transform 0.5s ease 0s;
+}
+
+.setting-nav-scaling:hover {
+	right: -20px;
+	font-size: 20px;
+}

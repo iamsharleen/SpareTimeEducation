@@ -7,7 +7,7 @@ import java.util.Map;
 import app.entity.CourseTypeCode;
 import system.dao.BaseDao;
 
-public interface CourseTypeDao extends BaseDao<CourseTypeCode, Serializable> {
+public interface CourseTypeDao {
 	
 	public List<Map> queryCourseTypes(String bizKey);
 

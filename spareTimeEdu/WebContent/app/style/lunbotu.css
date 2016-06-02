@@ -1,0 +1,45 @@
+/**{padding: 0;margin: 0;list-style-type: none;}
+body{font-size: 12px;}*/
+.carousel ul{
+	height: 20em;
+	padding: 0;
+	margin: 0;
+}
+.carousel li{
+	width: 0;
+	height: 0;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	overflow: hidden;
+	-moz-transition: width 1s;
+	-webkit-transition: width 1s;
+	transition: width 1s;
+}
+.carousel li img{
+	padding: 0;
+	margin: 0 auto;
+	height: 100% !important;
+	max-width:none;
+}
+.carousel li.active{
+	width: 100%;
+	height: 100% !important;
+}
+.carousel{
+	position: relative;
+}
+.carousel span{
+	margin: 0;
+	width: 1em;
+	padding: .2em;
+	font-size: 180%;
+	position: absolute;
+	cursor: pointer;
+}
+.carousel .prePic{
+	left: 0; top: 50%;height: 2em;margin-top: -1em;
+}
+.carousel .nextPic{
+	right: -.395em; top: 50%;height: 2em;margin-top: -1em;
+}

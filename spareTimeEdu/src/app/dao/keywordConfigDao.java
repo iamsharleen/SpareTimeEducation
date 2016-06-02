@@ -7,7 +7,7 @@ import java.util.Map;
 import app.entity.KeywordConfig;
 import system.dao.BaseDao;
 
-public interface keywordConfigDao extends BaseDao<KeywordConfig, Serializable> {
+public interface keywordConfigDao {
 
 	List<Map> queryKeywords();
 	

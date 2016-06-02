@@ -1,0 +1,257 @@
+<div class="wrap-full mod-setting" ng-controller="manageCtrl">
+	<div class="wrap-cont clearfix main">
+		<ul class="setting-nav">
+			<li class="nav-item " ng-class="{'nav-item-active':temp.myProfile}"><a
+				ng-click="myProfile()">个人信息</a>
+			<li class="nav-item " ng-class="{'nav-item-active':temp.myPublish}"><a
+				ng-click="myPublish()">我的发布</a></li>
+			<li class="nav-item " ng-class="{'nav-item-active':temp.myEnroll}"><a
+				ng-click="myEnroll()">我的报名</a></li>
+			<li class="nav-item " ng-class="{'nav-item-active':temp.myFollow}"><a
+				ng-click="myFollow()">我的关注</a></li>
+		</ul>
+		<!-- 我的发布 -->
+		<div class="setting-main " ng-if="temp.myPublish">
+			<div class="mod-setting-personal" id="setting-courseInfo">
+				<!--<div class="add-div-s">
+								<div style="display: inline-block;"><a href="javascript:;" onclick="publishNew()" class="add-course-a" status="0">发布</a></div>
+							</div>-->
+				<ul>
+					<li class="relative list-style course-list"><a
+						href="../front/courseInfo.html">
+							<div class="">
+								<img src="//hangjia.qiniudn.com/Fn0KdZboHfe3L8do00uyaEQubgmp" />
+
+								<div>
+									<span>如何培养你那不满8岁的熊孩子？</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong class="toBianji">审核</strong>
+								</p>
+							</div>
+					</a></li>
+					<li class="relative list-style course-list"><a
+						href="weike.html">
+							<div class="">
+								<img src="//hangjia.qiniudn.com/Fn0KdZboHfe3L8do00uyaEQubgmp" />
+								<div>
+									<span>如何给1-5岁孩子选书、读书？</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong class="toBianji">审核</strong>
+								</p>
+							</div>
+					</a></li>
+					<li class="relative list-style course-list"><a href="#aaa">
+							<div class="">
+								<img src="//hangjia.qiniudn.com/Fn0KdZboHfe3L8do00uyaEQubgmp" />
+								<div>
+									<span>如何在家和孩子玩创意游戏</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong>审核</strong>
+								</p>
+							</div>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 我的报名 -->
+		<div class="setting-main " ng-if="temp.myEnroll">
+			<div class="mod-setting-personal" id="setting-courseInfo">
+				<ul>
+					<li class="relative list-style course-list">
+					
+							<div class="">
+								<img src="//hangjia.qiniudn.com/FsC_f8UxKjW8UWnkGTdu2UWIFtV1!avatar" />
+
+								<div>
+									<span>如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏</span>
+								</div>
+
+								<p style="text-align: right;">
+									<a ui-sref="teacherDetail"><strong class="toBianji">查看</strong></a>
+									<a ng-click="comment()"><strong class="toBianji">评价</strong></a>
+								</p>
+							</div>
+				</li>
+					<li class="relative list-style course-list">
+					<div class="">
+								<img src="//hangjia.qiniudn.com/lgBv1r_U3wy234FnIcwqJGy8rsWr84!avatar" />
+								<div>
+									<span>如何在家和孩子玩创意游戏2</span>
+								</div>
+
+								<p style="text-align: right;">
+									<a ui-sref="teacherDetail"><strong class="toBianji">查看</strong></a>
+									<a ng-click="comment()"><strong class="toBianji">评价</strong></a>
+								</p>
+							</div>
+				</a></li>
+					<li class="relative list-style course-list">
+					
+							<div class="">
+								<img src="//hangjia.qiniudn.com/Fl13iRq8tRvWGmGDSgQGrorWWx9y!avatar" />
+								<div>
+									<span>如何在家和孩子玩创意游戏3</span>
+								</div>
+
+								<p style="text-align: right;">
+								<a ui-sref="teacherDetail"><strong class="toBianji">查看</strong></a>
+								<a ng-click="comment()"><strong class="toBianji">评价</strong></a>
+								</p>
+							</div>
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+		<!-- 我的关注 -->
+		<div class="setting-main " ng-if="temp.myFollow">
+			<div class="mod-setting-personal" id="setting-courseInfo">
+				<ul>
+					<li class="relative list-style course-list"><a
+						href="../front/courseInfo.html">
+							<div class="">
+								<img src="../../app/img/head_kdLw_25110000da9f118c.jpg" />
+
+								<div>
+									<span>如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong class="toBianji">取消关注</strong>
+								</p>
+							</div>
+					</a></li>
+					<li class="relative list-style course-list"><a
+						href="weike.html">
+							<div class="">
+								<img src="../../app/img/head_kdLw_25110000da9f118c.jpg" />
+								<div>
+									<span>如何在家和孩子玩创意游戏2</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong class="toBianji">取消关注</strong>
+								</p>
+							</div>
+					</a></li>
+					<li class="relative list-style course-list"><a href="#aaa">
+							<div class="">
+								<img src="../../app/img/head_kdLw_25110000da9f118c.jpg" />
+								<div>
+									<span>如何在家和孩子玩创意游戏3</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong>取消关注</strong>
+								</p>
+							</div>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 个人信息 -->
+		<div class="setting-main " ng-if="temp.myProfile">
+			<div id="userinfo" class="clearfix">
+				<div id="uifl " class="fl">
+					<img id="uifl-img"
+						src="//hangjia.qiniudn.com/FjL2etfS_7fn5Xt3zV3jTeOxPZ2R!avatar" />
+				</div>
+				<div id="uifr">
+					<h2 class="fl">路易妈妈</h2>
+					<div>
+						<a href="资料认证.html" class="click-identi"></a>
+					</div>
+				</div>
+			</div>
+
+			<ul class="switch clearfix">
+				<li><a href="#personal" class="active" for="setting-1">基本资料</a></li>
+				<!-- <li>
+					<a href="#children" for="setting-2">我的孩子</a></li><li> <a
+					href="#avator" for="setting-2">修改头像</a>
+				</li> -->
+				<li><a href="#password" for="setting-3">修改密码</a></li>
+				<!-- <li><a href="#phone" for="setting-4">绑定手机</a></li> -->
+			</ul>
+
+			<div class="mod-setting-personal active" id="setting-personal"
+				name="setting-1">
+				<!--<h2 class="page-tit"><i class="icon-user2"></i>基本资料</h2>-->
+				<div class="info-personal">
+					<form action="" autocomplete="off">
+						<ul>
+							<li><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昵称</label><input
+								type="text" value="路易妈妈果好鲜" autocomplete="off"></li>
+							<li><label>真实姓名</label> <input type="text" value="路小玲"
+								autocomplete="off"></li>
+							<li><label>常居住地</label> <select>
+									<option>广州</option>
+									<option value="">深圳</option>
+							</select></li>
+							<li class="sex-li"><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别</label>
+								<!--<a href="#" class="sex-a active">男</a> <a href="#" class="sex-a">女</a>-->
+								<div>
+									<label class="control-label"><input type="radio"
+										name="sex" value="男" />男</label> <label
+										class="control-label"><input type="radio" name="sex"
+										value="女"  checked="checked"/>女</label>
+								</div></li>
+							<li><label>手机号码</label> <input type="text"
+								value="18300070716" autocomplete="off"></li>
+
+							<li><label>个人简介</label>
+								<div class="control">
+									<textarea autocomplete="off" placeholder="请输入个人简介...">路易妈妈（高丹），知乎育儿达人，80后，育有一子路易3岁，中科院博士，在职妈妈，现从事大数据技术工作，兼顾亲子育儿的公益事业，是一个把“理论和实践”的天平严重倾向于实践的人，擅长以父母帮助父母的形式，提供0-3岁偏心理方面的各种育儿咨询</textarea>
+								</div></li>
+
+						</ul>
+						<div class="clearfix control-click">
+							<input type="submit" value="保存" />
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+			<!-- <div class="mod-setting-personal" id="setting-password"
+				name="setting-3">
+				<h2 class="page-tit"><i class="icon-user2"></i>修改密码</h2>
+				<div class="alter-password">
+					<form action="" method="post" autocomplete="off">
+						<div>
+							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧密码</label> <input
+								type="text" />
+						</div>
+
+						<div>
+							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码</label> <input
+								type="text" />
+						</div>
+
+
+						<div>
+							<label>确认新密码</label> <input type="text" />
+						</div>
+
+						<div class="control-click">
+							<input type="submit" value="保存" />
+						</div>
+
+					</form>
+
+
+				</div>
+
+			</div> -->
+		</div>
+
+	</div>
+</div>
+<!-- main end -->

@@ -11,17 +11,20 @@ import org.springframework.stereotype.Repository;
 
 import app.entity.KeywordConfig;
 import system.dao.BaseDaoImpl;
+import system.dao.QBCHelper;
 import system.entity.BaseEntity;
 import system.entity.PageInfo;
+import system.entity.ResultList;
 @Repository
-public class KeywordConfigDaoImpl extends BaseDaoImpl<KeywordConfig, Serializable> implements keywordConfigDao {
+public class KeywordConfigDaoImpl extends QBCHelper implements keywordConfigDao {
 
 	@Override
 	public List<Map> queryKeywords() {
-		String sql="select * from KEYWORD_CONFIG";
-		List params=new ArrayList();
-		List<Map>list=querySql(sql.toString(), params);
-		return list;
+		ResultList result=super.find(KeywordConfig.class, null);
+		if(result!=null){
+			return result.getList();
+		}
+		return null;
 	}
 
 }

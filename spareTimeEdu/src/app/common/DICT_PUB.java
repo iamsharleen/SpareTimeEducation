@@ -27,4 +27,14 @@ public class DICT_PUB {
 	
 	public static String PAY_STATUS_TOPAY="TOPAY";
 	public static String PAY_STATUS_PAYED="PAYED";
+	
+	public static String PRICE_RANGE_ONE="ONE";
+	public static String PRICE_RANGE_TWO="TWO";
+	public static String PRICE_RANGE_THREE="THREE";
+	public static String PRICE_RANGE_FOUR="FOUR";
+	
+	public static String ORDER_BY_ALL="ALL";
+	public static String ORDER_BY_PRICE="PRICE";
+	public static String ORDER_BY_POPULATION="POPULATION";
+	public static String ORDER_BY_COMMENT="COMMENT";
 }

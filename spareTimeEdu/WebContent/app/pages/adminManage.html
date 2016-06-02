@@ -1,0 +1,254 @@
+<div class="wrap-full mod-setting" ng-controller="adminManageCtrl">
+	<div class="wrap-cont clearfix main">
+		<ul class="setting-nav">
+			<li class="nav-item " ng-class="{'nav-item-active':temp.userManage}"><a
+				ng-click="userManage()">用户管理</a>
+			<li class="nav-item " ng-class="{'nav-item-active':temp.courseManage}"><a
+				ng-click="courseManage()">课程管理</a></li>
+			<!-- <li class="nav-item " ng-class="{'nav-item-active':temp.myEnroll}"><a
+				ng-click="myEnroll()">我的报名</a></li>
+			<li class="nav-item " ng-class="{'nav-item-active':temp.myFollow}"><a
+				ng-click="myFollow()">我的关注</a></li> -->
+		</ul>
+		<!-- 课程管理 -->
+		<div class="setting-main " ng-if="temp.courseManage">
+			<div class="mod-setting-personal" id="setting-courseInfo">
+				<div class="add-div-s">
+								<div style="display: inline-block;"><a href="javascript:;" onclick="publishNew()" class="add-course-a" status="0">发布</a></div>
+							</div>
+				<ul>
+					<li class="relative list-style course-list"><a
+						href="../front/courseInfo.html">
+							<div class="">
+								<img src="//hangjia.qiniudn.com/Fn0KdZboHfe3L8do00uyaEQubgmp" />
+
+								<div>
+									<span>如何培养你那不满8岁的熊孩子？</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong class="toBianji">审核</strong>
+								</p>
+							</div>
+					</a></li>
+					<li class="relative list-style course-list"><a
+						href="weike.html">
+							<div class="">
+								<img src="//hangjia.qiniudn.com/Fn0KdZboHfe3L8do00uyaEQubgmp" />
+								<div>
+									<span>如何给1-5岁孩子选书、读书？</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong class="toBianji">审核</strong>
+								</p>
+							</div>
+					</a></li>
+					<li class="relative list-style course-list"><a href="#aaa">
+							<div class="">
+								<img src="//hangjia.qiniudn.com/Fn0KdZboHfe3L8do00uyaEQubgmp" />
+								<div>
+									<span>如何在家和孩子玩创意游戏</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong>审核</strong>
+								</p>
+							</div>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--用户管理 -->
+		<div class="setting-main " ng-if="temp.userManage">
+			<div class="mod-setting-personal" id="setting-courseInfo">
+				<ul>
+					<li class="relative list-style course-list"><a
+						href="../front/courseInfo.html">
+							<div class="">
+								<img src="../../app/img/head_kdLw_25110000da9f118c.jpg" />
+
+								<div>
+									<span>如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong class="toBianji">取消关注</strong>
+								</p>
+							</div>
+					</a></li>
+					<li class="relative list-style course-list"><a
+						href="weike.html">
+							<div class="">
+								<img src="../../app/img/head_kdLw_25110000da9f118c.jpg" />
+								<div>
+									<span>如何在家和孩子玩创意游戏2</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong class="toBianji">取消关注</strong>
+								</p>
+							</div>
+					</a></li>
+					<li class="relative list-style course-list"><a href="#aaa">
+							<div class="">
+								<img src="../../app/img/head_kdLw_25110000da9f118c.jpg" />
+								<div>
+									<span>如何在家和孩子玩创意游戏3</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong>取消关注</strong>
+								</p>
+							</div>
+					</a></li>
+
+				</ul>
+
+			</div>
+		</div>
+		<!-- <!-- 我的关注 -->
+		<div class="setting-main " ng-if="temp.myFollow">
+			<div class="mod-setting-personal" id="setting-courseInfo">
+				<ul>
+					<li class="relative list-style course-list"><a
+						href="../front/courseInfo.html">
+							<div class="">
+								<img src="../../app/img/head_kdLw_25110000da9f118c.jpg" />
+
+								<div>
+									<span>如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏如何在家和孩子玩创意游戏</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong class="toBianji">取消关注</strong>
+								</p>
+							</div>
+					</a></li>
+					<li class="relative list-style course-list"><a
+						href="weike.html">
+							<div class="">
+								<img src="../../app/img/head_kdLw_25110000da9f118c.jpg" />
+								<div>
+									<span>如何在家和孩子玩创意游戏2</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong class="toBianji">取消关注</strong>
+								</p>
+							</div>
+					</a></li>
+					<li class="relative list-style course-list"><a href="#aaa">
+							<div class="">
+								<img src="../../app/img/head_kdLw_25110000da9f118c.jpg" />
+								<div>
+									<span>如何在家和孩子玩创意游戏3</span>
+								</div>
+
+								<p style="text-align: right;">
+									<strong>取消关注</strong>
+								</p>
+							</div>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+		个人信息
+		<div class="setting-main " ng-if="temp.myProfile">
+			<div id="userinfo" class="clearfix">
+				<div id="uifl " class="fl">
+					<img id="uifl-img"
+						src="../../../resource/common/img/head_kdLw_25110000da9f118c.jpg" />
+				</div>
+				<div id="uifr">
+					<h2 class="fl">李四</h2>
+					<div>
+						<a href="资料认证.html" class="click-identi"></a>
+					</div>
+				</div>
+			</div>
+
+			<ul class="switch clearfix">
+				<li><a href="#personal" class="active" for="setting-1">基本资料</a></li>
+				<li>
+					<a href="#children" for="setting-2">我的孩子</a></li><li> <a
+					href="#avator" for="setting-2">修改头像</a>
+				</li>
+				<li><a href="#password" for="setting-3">修改密码</a></li>
+				<li><a href="#phone" for="setting-4">绑定手机</a></li>
+			</ul>
+
+			<div class="mod-setting-personal active" id="setting-personal"
+				name="setting-1">
+				<h2 class="page-tit"><i class="icon-user2"></i>基本资料</h2>
+				<div class="info-personal">
+					<form action="" autocomplete="off">
+						<ul>
+							<li><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昵称</label><input
+								type="text" value="果好鲜" autocomplete="off"></li>
+							<li><label>真实姓名</label> <input type="text" value="果好鲜"
+								autocomplete="off"></li>
+							<li><label>常居住地</label> <select>
+									<option>广州</option>
+									<option value="">深圳</option>
+							</select></li>
+							<li class="sex-li"><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别</label>
+								<a href="#" class="sex-a active">男</a> <a href="#" class="sex-a">女</a>
+								<div>
+									<label class="control-label"><input type="radio"
+										name="sex" value="男" checked="checked" />男</label> <label
+										class="control-label"><input type="radio" name="sex"
+										value="女" />女</label>
+								</div></li>
+							<li><label>手机号码</label> <input type="text"
+								value="18300070716" autocomplete="off"></li>
+
+							<li><label>个人简介</label>
+								<div class="control">
+									<textarea autocomplete="off" placeholder="请输入个人简介...">阿里巴巴集团主要创始人，现担任阿里巴巴集团董事局主席、日本软银董事、TNC（大自然保护协会）中国理事会主席兼全球董事会成员、华谊兄弟董事、生命科学突破奖基金会董事。</textarea>
+								</div></li>
+
+						</ul>
+						<div class="clearfix control-click">
+							<input type="submit" value="保存" />
+						</div>
+
+					</form>
+				</div>
+			</div> -->
+
+			<!-- <div class="mod-setting-personal" id="setting-password"
+				name="setting-3">
+				<h2 class="page-tit"><i class="icon-user2"></i>修改密码</h2>
+				<div class="alter-password">
+					<form action="" method="post" autocomplete="off">
+						<div>
+							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧密码</label> <input
+								type="text" />
+						</div>
+
+						<div>
+							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码</label> <input
+								type="text" />
+						</div>
+
+
+						<div>
+							<label>确认新密码</label> <input type="text" />
+						</div>
+
+						<div class="control-click">
+							<input type="submit" value="保存" />
+						</div>
+
+					</form>
+
+
+				</div>
+
+			</div> -->
+		</div>
+
+	</div>
+</div>
+<!-- main end -->

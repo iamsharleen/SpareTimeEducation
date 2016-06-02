@@ -1,0 +1,452 @@
+﻿
+.switch {
+	margin-bottom: 20px;
+}
+.switch li a {
+	float: left;
+	display: inline-block;
+	width: 110px;
+	height: 35px;
+	line-height: 32px;
+	text-align: center;
+	margin-right: 5px;
+}
+.switch li a:hover {
+	background: #ff946e;
+	color: #fff;
+}
+.switch-select {
+	color: #fff !important;
+	background-color: #ff946e;
+}
+.select-data {
+	width: 70px;
+	height: 21px;
+}
+#personal-note {
+	width: 376px;
+	height: 200px;
+	padding: 5px 10px;
+}
+.display-none {
+	display: none !important;
+}
+.fl {
+	float: left;
+	display: inline-block;
+}
+#userinfo {
+	margin-bottom: 20px;
+}
+#uifl-img {
+	border-radius: 50% !important;
+	width: 80px;
+	margin-right: 10px;
+}
+#uifr a {
+	color: #fff;
+	display: inline-block;
+	width: 62px;
+	height: 23px;
+	background: url(../img/rz_bg.png) no-repeat 0 -26px;
+	margin-left: 10px;
+	position: relative;
+	top: 6px;
+}
+#uifr {
+	font-family: "楷体";
+	color: rgba(0, 0, 0, 0.72);
+}
+#uifr {
+	height: 80px;
+	line-height: 80px;
+}
+.edit-user {
+	font-size: 12px;
+	color: #ff8f2b !important;
+	display: inline-block;
+	background: url(../img/edituser_20150814.png) no-repeat left center;
+	padding-left: 20px;
+	margin-left: 20px;
+}
+.mod-setting-dl dt {
+	width: 100px;
+	text-align: right;
+	margin-right: 10px;
+	margin-bottom: 30px;
+	font-weight: 150;
+	/*	font: 12px/1.5 STHeiti,"Microsoft YaHei",arial;
+ *
+*/
+}
+.mod-setting-dl {
+	text-align: 30px;
+	line-height: 30px;
+	margin-top: 50px;
+	margin-left: 50px;
+}
+.mod-setting-dl input,
+textarea,
+select {
+	width: 240px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 30px;
+	border: 1px solid #ccc;
+}
+option {
+	text-align: center;
+}
+.center {
+	text-align: center;
+}
+#would-you a {
+	font-size: 30px;
+	font-family: "楷体";
+	display: inline-block;
+	width: 260px;
+	height: 45px;
+	border-radius: 20px;
+	background-color: #7CE94C;
+}
+#want-to input {
+	width: 350px;
+}
+#want-to textarea {
+	width: 400px;
+	height: 250px;
+	padding: 10px;
+}
+.must-fill {
+	font-style: normal;
+	color: #ff5f19;
+}
+#submit-application {
+	margin-top: 20px;
+	text-align: center;
+}
+#submit-application input {
+	border: none;
+	background-color: #239F2D;
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+	font-size: 20px;
+	color: white;
+}
+.photos-ul li {
+	float: left;
+	margin-right: 10px;
+	border: 1px solid gainsboro;
+}
+.photos-ul li img {
+	width: 150px;
+}
+.relative {
+	position: relative;
+}
+input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 150px;
+	height: 150px;
+	opacity: 0;
+	cursor: pointer;
+}
+.file-span {
+	display: inline-block;
+	height: 150px;
+	width: 150px;
+	text-align: center;
+	line-height: 150px;
+	font-size: 100px;
+	font-family: serif;
+}
+.confirm-cancel {
+	margin-top: 20px;
+}
+.confirm-cancel a {
+	/*width: 100px;
+	height: 50px;
+	display: inline-block;*/
+}
+.course-dl {
+	margin-top: 20px;
+	margin-left: 50px;
+}
+.course-dl dt {
+	width: 130px;
+	margin-right: 10px;
+	text-align: right;
+	margin-bottom: 15px;
+	font-weight: 700;
+	/*	font: 12px/1.5 STHeiti,"Microsoft YaHei",arial;
+*/
+}
+.course-dl dd,
+input,
+select {
+	color: #666;
+}
+.course-em {
+	display: inline-block;
+	width: 131px;
+	height: 34px;
+	background-color:#94DB9C ;
+	text-align: center;
+	line-height: 34px;
+	color: #02877E;
+	font-size: 20px;
+	letter-spacing: 15px;
+	border-radius: 5px;
+}
+.edit-course {
+	position: absolute;
+	right: 30px;
+	top: 54px;
+}
+#add-course,
+#add-microCourse {
+	text-align: right;
+}
+#add-course a,
+#add-microCourse a {
+	position: relative;
+	right: 30px;
+	color: green;
+	opacity: 0.5;
+}
+#add-course a:hover,
+#add-microCourse a:hover {
+	opacity: 1;
+}
+.verifying {
+	display: inline-block;
+	padding: 2px 10px;
+	background-color: darkgrey;
+	margin-left: 20px;
+	border-radius: 4px;
+	color: white;
+}
+.pass {
+	display: inline-block;
+	padding: 2px 10px;
+	background-color: #2CA536;
+	margin-left: 20px;
+	border-radius: 4px;
+	color: white;
+}
+#realName-identi {
+	text-align: center;
+	margin: 20px;
+}
+.sm_text {
+	font-size: 14px;
+	font-weight: bold;
+	color: #000;
+}
+.sm_text h3 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.sm_text span {
+	padding-right: 8px;
+	color: #737373;
+	font: 12px/1.5 "微软雅黑", Helvetica, Arial, sans-serif;
+}
+p.annot {
+	color: #f60;
+	font-size: 14px;
+	font-weight: bold;
+	padding-top: 20px;
+}
+.file-identi {
+	position: absolute;
+	display: inline-block;
+	background: #ff921a;
+	color: white;
+	line-height: 36px;
+	width: 84px;
+	height: 36px;
+	top: 76px;
+	left: 288px;
+}
+.file-identi input[type=file] {
+	width: 84px;
+	height: 36px;
+}
+#submit-identi {
+	width: 120px;
+	height: 40px;
+	margin: 20px;
+	border: none;
+	color: white;
+	background-color: gainsboro;
+	border-radius: 3px;
+}
+.money-text {
+	width: 60px;
+	padding-left: 4px;
+	margin-left: 4px;
+}
+.method-ul span {
+	width: 50px;
+	display: inline-block;
+}
+.method-ul li {
+	margin-bottom: 6px;
+	height: 22px;
+	line-height: 22px;
+}
+.method-ul {
+	padding-left: 140px;
+	margin-bottom: 20px;
+}
+#add-course-form h3,
+#add-microCourse-form h3 {
+	color: green;
+	text-align: center;
+}
+#add-course-form input[type=text] {
+	padding-left: 4px;
+}
+#cert-dl span {
+	display: inline-block;
+	text-align: center;
+	width: 116px;
+	height: 32px;
+	background-color: #E6E6E6;
+	border: 1px solid #777;
+}
+.btn {
+	border: none;
+	color: white;
+	padding: 5px 20px;
+	border-radius: 8px;
+	margin-right: 10px;
+}
+.btn-save {
+	background-color: #FF5F19;
+}
+.btn-cancel {
+	background-color: RGB(162, 163, 170);
+}
+.btn-delete {
+	background-color: #E93333;
+}
+input,
+select {
+	border: 1px solid #E2E2E2;
+	border-radius: 3px;
+}
+input[type=text] {
+	padding-left: 4px;
+}
+.teach-time {
+	text-align: center;
+}
+.teach-time tr {
+	background-color: RGB(244, 244, 244);
+}
+.teach-time .tr-two,
+th {
+	background-color: RGB(232, 232, 232);
+}
+.teach-time a {
+	text-align: center;
+	position: relative;
+	display: inline-block;
+	width: 58px;
+	height: 30px;
+	line-height: 30px;
+}
+.icon-choose {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 16px;
+	height: 18px;
+	background-position: -132px -897px;
+	background-image: url(../img/icons7.png);
+}
+.icon-notChoose {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 16px;
+	height: 18px;
+	background-position: -477px -931px;
+	background-image: url(../img/icons7.png);
+}
+table {
+	margin-bottom: 20px;
+}
+.teachTime-checkbox-1 {
+	width: 30px;
+	height: 30px;
+	background-color: chartreuse;
+	/*	opacity: 0;
+	*/
+	
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+label {
+	margin-right: 5px;
+	border: 2px solid gainsboro;
+	padding: 0px 4px;
+	border-radius: 6px;
+}
+input[type="checkbox"],
+input[type='radio'] {
+	display: none;
+}
+#course-detail {
+	height: 150px;
+	width: 400px;
+}
+.qwindow_mask {
+	z-index: 30000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	display: none;
+	background: #545454;
+	width: 100%;
+	height: 100%;
+	opacity: 0.50;
+	filter: alpha(opacity=50);
+	overflow: overlay;
+}
+.add-div {
+	display: inline-block;
+	top: 53px;
+	left: atuo;
+	z-index: 30000;
+	opacity: 0;
+	left: 50%;
+	visibility: hidden;
+	position: absolute;
+	margin: 0px auto;
+	
+}
+.add-div  form{
+	width: 600px;
+	background-color: white;
+	font-size: 14px;
+	position: absolute;
+	left: -300px;
+	border-radius: 30px;
+}
+.picture2D {
+	display: inline-block;
+	border: 1px solid lightgrey;
+	width: 100px;
+	height: 100px;
+	line-height: 102px;
+	margin-bottom: 10px;
+	font-family: "新宋体";
+}

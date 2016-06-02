@@ -16,4 +16,6 @@ public interface CourseService {
 	public List<CourseInfo> queryCourseInfoById(String id);
 
 	public List<Map> queryCourseList(Map map);
+	
+	public void saveCourse(Map map);
 }

@@ -28,4 +28,14 @@ public class BaseEntity {
 		ID = iD;
 	}
 	
+	public Object clone() {
+		Object result = null;
+		try {
+			result = (Object) super.clone();
+		} catch (CloneNotSupportedException e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+	
 }

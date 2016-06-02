@@ -9,17 +9,19 @@ import org.springframework.stereotype.Repository;
 
 import app.entity.CourseTypeCode;
 import system.dao.BaseDaoImpl;
+import system.dao.QBCHelper;
+import system.entity.ResultList;
 import system.utils.SqlUtil;
 @Repository
-public class CourseTypeDaoImpl extends BaseDaoImpl<CourseTypeCode, Serializable> implements CourseTypeDao {
+public class CourseTypeDaoImpl extends QBCHelper implements CourseTypeDao {
 
 	@Override
 	public List<Map> queryCourseTypes(String bizKey) {
-		StringBuilder sql=new StringBuilder();
-		List params=new ArrayList();
-		sql.append("select * from COURSE_TYPE_CODE");
-		List<Map>list=querySql(sql.toString(), params);
-		return list;
+		ResultList result=super.find(CourseTypeCode.class, null);
+		if(result!=null){
+			return result.getList();
+		}
+		return null;
 	}
 
 }

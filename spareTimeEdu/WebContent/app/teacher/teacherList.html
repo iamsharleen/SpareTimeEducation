@@ -11,13 +11,6 @@
 						<span class="icon icon-search"> </span>我要找
 					</h2>
 					<ul class="category-coruseType-list">
-						<!--<li class="picked unlimited"><a class="inner" data-action="select-coruseType" href="javascript:areaOnload(0);">不限</a></li>-->
-
-						<!--<li><a class="inner" data-action="select-coruseType" href="javascript:;">微课</a></li>
-
-								<li><a class="inner" data-action="select-coruseType" href="javascript:;">讲座培训</a></li>
-								<li><a class="inner" data-action="select-coruseType" href="javascript:;">免费公开课</a></li>-->
-
 						<li ng-repeat="type in category.courseTypes track by $index"><a
 							class="inner" ng-click="chooseType($index)" ng-bind="type.NAME"></a>
 						</li>
@@ -30,18 +23,10 @@
 						<span class="icon  icon-yen"></span>费用
 					</h2>
 					<ul class="category-hot-list">
-						<li ng-repeat="price in category.typeList track by $index"><a
-							class="inner" ng-click="choosePrice($index)" ng-bind="price"></a>
+						<li ng-repeat="price in category.priceList track by $index"><a
+							class="inner" ng-click="choosePrice($index)" ng-bind="price|priceFilter"></a>
 						</li>
 
-						<li><a class="inner" data-action="select-hot"
-							href="javascript:;">100-300</a></li>
-
-						<li><a class="inner" data-action="select-hot"
-							href="javascript:;">300-500</a></li>
-
-						<li><a class="inner" data-action="select-hot"
-							href="javascript:;">500+</a></li>
 					</ul>
 				</div>
 
@@ -68,11 +53,10 @@
 	<div class="content">
 		<div class="total">
 			<ul class="sort-list">
-				<li class="picked "><a data-value="0" href="javascript:void 0;">综合排序</a></li>
-				<li class=""><a data-value="1" href="javascript:void 0;">人气<span></span></a></li>
-				<li class=""><a data-value="2" href="javascript:void 0;">评价<span></span></a></li>
-
-				<li class=""><a data-value="3" href="javascript:void 0;">价格<span></span></a></li>
+				<li class="picked "><a ng-click="changeOrderBy('ALL')">综合排序</a></li>
+				<li class=""><a ng-click="changeOrderBy('POPULATION')">人气<span></span></a></li>
+				<li class=""><a ng-click="changeOrderBy('COMMENT')">评价<span></span></a></li>
+				<li class=""><a ng-click="changeOrderBy('PRICE')">价格<span></span></a></li>
 			</ul>
 			<select class="select-place">
 				<option>广州</option>
@@ -112,29 +96,16 @@
 			</a></li>
 
 		</ul>
-		<!-- <ul class="pager">
-
-					<li class="current"><a href="http://www.zaih.com/topics/?city=beijing">1</a></li>
-
-					<li><a href="http://www.zaih.com/topics/?city=beijing&amp;page=2">2</a></li>
-
-					<li><a href="http://www.zaih.com/topics/?city=beijing&amp;page=3">3</a></li>
-
-					<li>...</li>
-
-					<li><a href="http://www.zaih.com/topics/?city=beijing&amp;page=137">137</a></li>
-
-					<li><a href="http://www.zaih.com/topics/?city=beijing&amp;page=2"><span
-						class="icon icon-chevron-right"></span></a></li>
-
-				</ul> -->
+		<ul class="pager">
 
 		<uib-pagination total-items="pagination.totalItems"
 			ng-model="pagination.currentPage" max-size="pagination.maxSize"
 			class="pagination-sm" boundary-links="true" rotate="false"
 			num-pages="pagination.numPages" previous-text="&lsaquo;"
 			next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+		</ul>	
 	</div>
+	
 	<!--main content start-->
 
 </div>
